@@ -1,0 +1,23 @@
+# .gitignore pour le projet OLD50m
+# Ce fichier spécifie les dossiers et fichiers à ignorer dans le projet OLD50m
+
+# Ignorer des dossiers spécifiques
+
+docs/
+carte/
+Qgis_projet/
+
+# Ignorer les fichiers gitconfig
+*.gitconfig
+/.gitconfig
+.gitconfig/
+*.yaml
+.Renviron
+/git
+
+# Fichiers temporaires et de sauvegarde
+*.log
+*.tmp
+*.swp
+*.bak
+*~
