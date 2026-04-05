@@ -1,0 +1,10 @@
+name: cartOLD
+title:
+username: ssm-ecologie
+account: ssm-ecologie
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16044064
+bundleId: 11331176
+url: https://ssm-ecologie.shinyapps.io/cartOLD/
+version: 1

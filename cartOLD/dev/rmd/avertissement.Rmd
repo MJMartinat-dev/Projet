@@ -1,0 +1,31 @@
+---
+output: 
+  html_document:
+    toc: false
+    self_contained: true
+    theme: null 
+    mathjax: null
+    css: "../../inst/app/www/css/style.css"
+    pandoc_args: ["--variable=body-class:avertissement"]
+---
+
+<div class="text-avertissement-cadre">
+
+  <p>Sur le territoire d’une commune, la cartographie indique la zone à débroussailler par chaque propriétaire.</p>
+
+  <p>
+  <strong>La cartographie est indicative, non opposable, et constitue un document d’information.</strong><br>
+  Elle ne prétend que donner un aperçu le plus réaliste possible des périmètres à débroussailler.
+  </p>
+
+  <p><em>De nombreux paramètres peuvent en effet altérer l'exactitude des zones à débroussailler :</em></p>
+
+  <ul>
+    <li>changement récent de propriétaire, nouvelles constructions,</li>
+    <li>parcellaire cadastral imprécis,</li>
+    <li>présence de routes, voies ferrées, lignes électriques,</li>
+    <li>pente des terrains, ...</li>
+    <li>ripisylves et forêts alluviales, ...</li>
+  </ul>
+</div>
+

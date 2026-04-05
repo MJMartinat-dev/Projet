@@ -1,0 +1,772 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FICHIER     : rmd.css
+   AUTEUR      : Marie-Jeanne MARTINAT
+   DATE        : 2025
+   ORGANISATION: DDT de la Drôme - Préfecture de la Drôme
+   APPLICATION : cartOLD - Pages RMarkdown statiques
+   DESCRIPTION : Feuille de styles pour les pages RMarkdown
+                 (aide.Rmd, mentions_legales.Rmd, confidentialite.Rmd)
+                 ─────────────────────────────────────────────────────────────────
+                 SOMMAIRE :
+                 1. RESET ET STYLES GLOBAUX
+                 2. CONTENEUR PRINCIPAL
+                 3. EN-TÊTE PRÉFÈTE
+                 4. CADRES ET BANDEAUX
+                 5. BLOCS DE TEXTE
+                 6. CHAPEAU ET ENCADRÉS
+                 7. LISTES ET ÉTAPES
+                 8. TABLEAUX
+                 9. BLOC CONTACT
+                 10. BOUTON RETOUR ET FOOTER
+                 11. RESPONSIVE DESIGN
+                 12. IMPRESSION
+                 13. ACCESSIBILITÉ
+                 ─────────────────────────────────────────────────────────────────
+   PALETTE COULEURS DSFR (identique à style.css) :
+                 - Bleu France      : #000091
+                 - Bleu France hover: #1212FF
+                 - Bleu France light: #E3E3FD
+                 - Bleu DSFR        : #465F9D
+                 - Rouge Marianne   : #E1000F
+                 - Warning          : #CE0500
+                 - Fond principal   : cornsilk
+                 - Fond alternatif  : #f5f5dc
+                 - Texte principal  : #2c3e50
+                 - Texte secondaire : #3A3A3A
+                 - Gris titre       : #161616
+                 - Gris bordure     : #E5E5E5
+                 - Gris mention     : #666666
+                 - Info background  : #E8EDFF
+                 - Info border      : #6A6AF4
+                 - Warning bg       : #FEF4F3
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 1. RESET ET STYLES GLOBAUX                                                    ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+body {
+  margin: 0;                                                                    /* Supprime marges navigateur */
+  padding: 0;                                                                   /* Supprime padding navigateur */
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;                /* Police système moderne */
+  background-color: cornsilk;                                                    /* Couleur de repli si image absente */
+  background-image: url("../../inst/app/www/images/feux_sud_est.png");          /* Image de fond */
+  background-size: cover;                                                       /* Couvre tout l'espace */
+  background-position: center;                                                  /* Centré */
+  background-attachment: fixed;                                                 /* Fond fixe au scroll */
+  background-repeat: no-repeat;                                                 /* Pas de répétition */
+  color: #2c3e50;                                                               /* Couleur texte principal */
+  line-height: 1.6;                                                             /* Interligne confortable */
+  -webkit-font-smoothing: antialiased;                                          /* Lissage polices WebKit */
+  -moz-osx-font-smoothing: grayscale;                                           /* Lissage polices Firefox */
+  min-height: 100vh;                                                            /* Hauteur minimale */
+}
+
+.main-wrapper {
+  max-width: 1100px;                                                            /* Largeur max contenu */
+  margin: 30px auto 10px;                                                       /* Centrage horizontal */
+  padding: 0 18px;                                                              /* Marges latérales */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 3. EN-TÊTE PRÉFÈTE                                                            ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.entete-prefete {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Alignement vertical centré */
+  gap: 1.5rem;                                                                  /* Espacement entre éléments */
+  padding: 1.25rem 2rem;                                                        /* Padding interne */
+  background: cornsilk;                                                         /* Fond jaune pâle */
+  border-bottom: 1px solid #E5E5E5;                                             /* Bordure basse grise */
+}
+
+.logo-prefete {
+  height: 70px;                                                                 /* Hauteur du logo */
+  width: auto;                                                                  /* Largeur proportionnelle */
+  flex-shrink: 0;                                                               /* Ne pas réduire */
+}
+
+.entete-titres {
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Empilage vertical */
+  gap: 0.25rem;                                                                 /* Espacement entre lignes */
+}
+
+.entete-titres .intitule-prefecture {
+  font-size: 1.125rem;                                                          /* Taille 18px */
+  font-weight: 700;                                                             /* Gras */
+  color: #000091;                                                               /* Bleu France */
+  line-height: 1.3;                                                             /* Interligne serré */
+}
+
+.entete-titres .intitule-service {
+  font-size: 0.875rem;                                                          /* Taille 14px */
+  font-weight: 600;                                                             /* Semi-gras */
+  color: #161616;                                                               /* Gris titre */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 4. CADRES ET BANDEAUX                                                         ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bloc-aide-cadre,
+.bloc-confidentialite-cadre,
+.bloc-mlegales-cadre,
+.bloc-avertissement-cadre {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  border-radius: 14px;                                                          /* Coins arrondis */
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);                                   /* Ombre portée */
+  overflow: hidden;                                                             /* Masque débordements */
+  border: 1px solid rgba(1, 105, 116, 0.08);                                    /* Bordure subtile */
+}
+
+.image_aide_bg,
+.image_confidentialite_bg,
+.image_mlegales_bg,
+.image_avertissement_bg {
+  position: relative;                                                           /* Position pour pseudo-éléments */
+  background: linear-gradient(120deg,                                           /* Dégradé bleu DSFR */
+                              rgba(70, 95, 157, 0.75),
+                              rgba(70, 95, 157, 0.85),
+                              rgba(70, 95, 157, 1));
+  color: white;                                                                 /* Texte blanc */
+  text-align: center;                                                           /* Centrage texte */
+  padding: 2.5rem 2rem 2rem;                                                    /* Padding généreux */
+}
+
+.image_aide_bg::before,
+.image_confidentialite_bg::before,
+.image_mlegales_bg::before,
+.image_avertissement_bg::before {
+  content: "";                                                                  /* Contenu vide */
+  position: absolute;                                                           /* Position absolue */
+  top: 0;                                                                       /* Aligné haut */
+  left: 0;                                                                      /* Aligné gauche */
+  right: 0;                                                                     /* Aligné droite */
+  bottom: 0;                                                                    /* Aligné bas */
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.6;                                                                 /* Semi-transparent */
+  pointer-events: none;                                                         /* Pas d'interaction */
+}
+
+.image_aide_bg::after,
+.image_confidentialite_bg::after,
+.image_mlegales_bg::after,
+.image_avertissement_bg::after {
+  content: "";                                                                  /* Contenu vide */
+  position: absolute;                                                           /* Position absolue */
+  bottom: 0;                                                                    /* Aligné bas */
+  left: 0;                                                                      /* Aligné gauche */
+  right: 0;                                                                     /* Aligné droite */
+  height: 4px;                                                                  /* Hauteur bandeau */
+  background: linear-gradient(to right, #000091 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #E1000F 66.66%);
+}
+
+.image_aide_bg h2,
+.image_confidentialite_bg h2,
+.image_mlegales_bg h2,
+.image_avertissement_bg h2 {
+  position: relative;                                                           /* Au-dessus du motif */
+  z-index: 1;                                                                   /* Priorité d'affichage */
+  margin: 0;                                                                    /* Pas de marge */
+  font-size: 1.75rem;                                                           /* Taille 28px */
+  font-weight: 700;                                                             /* Gras */
+  color: white !important;                                                      /* Texte blanc */
+  text-transform: uppercase;                                                    /* Majuscules */
+  letter-spacing: 0.05em;                                                       /* Espacement lettres */
+  border: none;                                                                 /* Pas de bordure */
+  padding: 0;                                                                   /* Pas de padding */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 5. BLOCS DE TEXTE                                                             ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bloc-texte-aide-cadre,
+.bloc-texte-confidentialite-cadre,
+.bloc-texte-mlegales-cadre,
+.bloc-texte-avertissement-cadre {
+  padding: 2rem 2.5rem 2.5rem;                                                  /* Padding généreux */
+  background: cornsilk;                                                         /* Fond jaune pâle */
+}
+
+.bloc-texte-aide-cadre h2,
+.bloc-texte-confidentialite-cadre h2,
+.bloc-texte-mlegales-cadre h2,
+.bloc-texte-avertissement-cadre h2 {
+  color: #000091;                                                               /* Bleu France */
+  font-size: 1.25rem;                                                           /* Taille 20px */
+  font-weight: 700;                                                             /* Gras */
+  margin: 2rem 0 1rem;                                                          /* Marges verticales */
+  padding-bottom: 0.5rem;                                                       /* Espace avant bordure */
+  border-bottom: 2px solid #000091;                                             /* Soulignement bleu */
+  text-align: left;                                                             /* Aligné à gauche */
+}
+
+.bloc-texte-aide-cadre h2:first-child,
+.bloc-texte-confidentialite-cadre h2:first-child,
+.bloc-texte-mlegales-cadre h2:first-child,
+.bloc-texte-avertissement-cadre h2:first-child {
+  margin-top: 0;                                                                /* Pas de marge haute premier H2 */
+}
+
+.bloc-texte-aide-cadre h3,
+.bloc-texte-confidentialite-cadre h3,
+.bloc-texte-mlegales-cadre h3,
+.bloc-texte-avertissement-cadre h3 {
+  color: #161616;                                                               /* Gris titre */
+  font-size: 1.0625rem;                                                         /* Taille 17px */
+  font-weight: 600;                                                             /* Semi-gras */
+  margin: 1.5rem 0 0.75rem;                                                     /* Marges verticales */
+  text-align: left;                                                             /* Aligné à gauche */
+}
+
+.bloc-texte-aide-cadre p,
+.bloc-texte-confidentialite-cadre p,
+.bloc-texte-mlegales-cadre p,
+.bloc-texte-avertissement-cadre p {
+  line-height: 1.7;                                                             /* Interligne aéré */
+  margin: 0 0 1rem;                                                             /* Marge basse */
+  text-align: left;                                                             /* Aligné à gauche */
+}
+
+.bloc-texte-aide-cadre a,
+.bloc-texte-confidentialite-cadre a,
+.bloc-texte-mlegales-cadre a,
+.bloc-texte-avertissement-cadre a {
+  color: #000091;                                                               /* Bleu France */
+  text-decoration: underline;                                                   /* Souligné */
+  text-underline-offset: 2px;                                                   /* Décalage soulignement */
+  font-weight: 600;                                                             /* Semi-gras */
+  transition: color 0.2s ease;                                                  /* Transition douce */
+}
+
+.bloc-texte-aide-cadre a:hover,
+.bloc-texte-confidentialite-cadre a:hover,
+.bloc-texte-mlegales-cadre a:hover,
+.bloc-texte-avertissement-cadre a:hover {
+  color: #1212FF;                                                               /* Bleu France hover */
+  text-decoration: none;                                                        /* Retire soulignement */
+}
+
+.bloc-texte-aide-cadre hr,
+.bloc-texte-confidentialite-cadre hr,
+.bloc-texte-mlegales-cadre hr,
+.bloc-texte-avertissement-cadre hr {
+  border: none;                                                                 /* Supprime bordure par défaut */
+  height: 1px;                                                                  /* Hauteur fine */
+  background: #E5E5E5;                                                          /* Gris bordure */
+  margin: 2rem 0;                                                               /* Marges verticales */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 6. CHAPEAU ET ENCADRÉS                                                        ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.chapeau {
+  font-size: 1.0625rem;                                                         /* Taille 17px */
+  color: #3A3A3A;                                                               /* Gris texte */
+  margin-bottom: 1.5rem;                                                        /* Marge basse */
+  padding: 1.25rem 1.5rem;                                                      /* Padding interne */
+  background: #f5f5dc;                                                          /* Fond cornsilk clair */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  border-left: 4px solid #000091;                                               /* Accent bleu France */
+}
+
+.encadre-info {
+  background: #E8EDFF;                                                          /* Fond bleu clair */
+  border: 1px solid #6A6AF4;                                                    /* Bordure violette */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  padding: 1.25rem 1.5rem;                                                      /* Padding interne */
+  margin: 1.25rem 0;                                                            /* Marges verticales */
+}
+
+.encadre-info .titre-encadre {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Alignement vertical */
+  gap: 0.5rem;                                                                  /* Espacement icône/texte */
+  color: #000091;                                                               /* Bleu France */
+  font-weight: 700;                                                             /* Gras */
+  font-size: 0.9375rem;                                                         /* Taille 15px */
+  margin-bottom: 0.5rem;                                                        /* Marge basse */
+}
+
+.encadre-warning {
+  background: #FEF4F3;                                                          /* Fond rouge pâle */
+  border: 1px solid #CE0500;                                                    /* Bordure rouge */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  padding: 1.25rem 1.5rem;                                                      /* Padding interne */
+  margin: 1.25rem 0;                                                            /* Marges verticales */
+}
+
+.encadre-warning .titre-encadre {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Alignement vertical */
+  gap: 0.5rem;                                                                  /* Espacement icône/texte */
+  color: #CE0500;                                                               /* Rouge warning */
+  font-weight: 700;                                                             /* Gras */
+  font-size: 0.9375rem;                                                         /* Taille 15px */
+  margin-bottom: 0.5rem;                                                        /* Marge basse */
+}
+
+.encadre-info p:last-child,
+.encadre-warning p:last-child {
+  margin-bottom: 0;                                                             /* Pas de marge dernier p */
+}
+
+.conseil {
+  margin: 1.5rem 0;                                                             /* Marges verticales */
+  padding: 1rem 1.5rem;                                                         /* Padding interne */
+  background: #E8EDFF;                                                          /* Fond bleu clair */
+  border-left: 4px solid #000091;                                               /* Accent bleu France */
+  border-radius: 0 4px 4px 0;                                                   /* Coins arrondis droite */
+}
+
+.conseil p {
+  margin: 0;                                                                    /* Pas de marge */
+}
+
+.conseil strong {
+  color: #000091;                                                               /* Bleu France */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 7. LISTES ET ÉTAPES                                                           ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bloc-texte-aide-cadre ul,
+.bloc-texte-confidentialite-cadre ul,
+.bloc-texte-mlegales-cadre ul,
+.bloc-texte-avertissement-cadre ul {
+  padding-left: 0;                                                              /* Pas de padding gauche */
+  list-style: none;                                                             /* Supprime puces par défaut */
+  line-height: 1.7;                                                             /* Interligne aéré */
+  margin: 0.5rem 0 1.25rem;                                                     /* Marges verticales */
+}
+
+.bloc-texte-aide-cadre ul li,
+.bloc-texte-confidentialite-cadre ul li,
+.bloc-texte-mlegales-cadre ul li,
+.bloc-texte-avertissement-cadre ul li {
+  position: relative;                                                           /* Pour puce custom */
+  padding-left: 1.25rem;                                                        /* Espace pour puce */
+  margin-bottom: 0.625rem;                                                      /* Espacement items */
+}
+
+.bloc-texte-aide-cadre ul li::before,
+.bloc-texte-confidentialite-cadre ul li::before,
+.bloc-texte-mlegales-cadre ul li::before,
+.bloc-texte-avertissement-cadre ul li::before {
+  content: "–";                                                                 /* Tiret comme puce */
+  position: absolute;                                                           /* Positionnement absolu */
+  left: 0;                                                                      /* À gauche */
+  color: #000091;                                                               /* Bleu France */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.etapes {
+  counter-reset: etape;                                                         /* Initialise compteur */
+  list-style: none !important;                                                  /* Supprime puces */
+  padding: 0 !important;                                                        /* Pas de padding */
+  margin: 1.5rem 0;                                                             /* Marges verticales */
+}
+
+.etapes li {
+  position: relative;                                                           /* Pour numéro absolu */
+  padding-left: 3.5rem !important;                                              /* Espace pour numéro */
+  margin-bottom: 1rem;                                                          /* Espacement items */
+  min-height: 2.25rem;                                                          /* Hauteur minimale */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Alignement vertical */
+}
+
+.etapes li::before {
+  counter-increment: etape;                                                     /* Incrémente compteur */
+  content: counter(etape) !important;                                           /* Affiche numéro */
+  position: absolute;                                                           /* Positionnement absolu */
+  left: 0;                                                                      /* À gauche */
+  width: 2.25rem;                                                               /* Largeur badge */
+  height: 2.25rem;                                                              /* Hauteur badge */
+  background: #000091;                                                          /* Fond bleu France */
+  color: white;                                                                 /* Texte blanc */
+  border-radius: 50%;                                                           /* Cercle */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centrage vertical */
+  justify-content: center;                                                      /* Centrage horizontal */
+  font-weight: 700;                                                             /* Gras */
+  font-size: 0.9375rem;                                                         /* Taille 15px */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 8. TABLEAUX                                                                   ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bloc-texte-aide-cadre table {
+  width: 100%;                                                                  /* Pleine largeur */
+  border-collapse: collapse;                                                    /* Fusionne bordures */
+  margin: 1.5rem 0;                                                             /* Marges verticales */
+  background: white;                                                            /* Fond blanc */
+  border: 1px solid #E5E5E5;                                                    /* Bordure grise */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  overflow: hidden;                                                             /* Masque débordements */
+}
+
+.bloc-texte-aide-cadre thead tr {
+  background: #000091;                                                          /* Fond bleu France */
+}
+
+.bloc-texte-aide-cadre th {
+  font-weight: 600;                                                             /* Semi-gras */
+  text-align: left;                                                             /* Aligné à gauche */
+  padding: 0.875rem 1.25rem;                                                    /* Padding cellule */
+  color: white;                                                                 /* Texte blanc */
+  font-size: 0.875rem;                                                          /* Taille 14px */
+}
+
+.bloc-texte-aide-cadre td {
+  padding: 0.875rem 1.25rem;                                                    /* Padding cellule */
+  border-bottom: 1px solid #E5E5E5;                                             /* Bordure basse */
+  font-size: 0.9375rem;                                                         /* Taille 15px */
+}
+
+.bloc-texte-aide-cadre tr:last-child td {
+  border-bottom: none;                                                          /* Pas de bordure dernière ligne */
+}
+
+.bloc-texte-aide-cadre tbody tr:nth-child(even) {
+  background: #f5f5dc;                                                          /* Fond alterné cornsilk */
+}
+
+.bloc-texte-aide-cadre tbody tr:hover {
+  background: #E3E3FD;                                                          /* Fond hover bleu clair */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 9. BLOC CONTACT                                                               ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bloc-contact {
+  background: #f5f5dc;                                                          /* Fond cornsilk clair */
+  padding: 1.5rem;                                                              /* Padding interne */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  border-left: 4px solid #E1000F;                                               /* Accent rouge Marianne */
+  margin: 1.5rem 0;                                                             /* Marges verticales */
+}
+
+.bloc-contact strong {
+  color: #000091;                                                               /* Bleu France */
+  display: block;                                                               /* Bloc */
+  margin-bottom: 0.75rem;                                                       /* Marge basse */
+  font-size: 1.0625rem;                                                         /* Taille 17px */
+}
+
+.bloc-contact p {
+  margin: 0;                                                                    /* Pas de marge */
+  line-height: 1.7;                                                             /* Interligne aéré */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 10. BOUTON RETOUR ET FOOTER                                                   ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.pied-page {
+  text-align: center;                                                           /* Centré */
+  color: #666666;                                                               /* Gris mention */
+  font-size: 0.8125rem;                                                         /* Taille 13px */
+  padding-top: 1.5rem;                                                          /* Padding haut */
+  margin-top: 2rem;                                                             /* Marge haute */
+  border-top: 1px solid #E5E5E5;                                                /* Bordure haute */
+  line-height: 1.8;                                                             /* Interligne aéré */
+}
+
+.retour-wrapper {
+  text-align: center;                                                           /* Centré */
+  margin: 24px 0 10px;                                                          /* Marges verticales */
+}
+
+.retour-wrapper a {
+  display: inline-flex;                                                         /* Flex inline */
+  align-items: center;                                                          /* Alignement vertical */
+  gap: 0.5rem;                                                                  /* Espacement flèche/texte */
+  padding: 12px 26px;                                                           /* Padding interne */
+  background: linear-gradient(120deg, rgba(70, 95, 157, 0.75), rgba(70, 95, 157, 0.85), rgba(70, 95, 157, 1));
+  color: #fff;                                                                  /* Texte blanc */
+  border-radius: 8px;                                                           /* Coins arrondis */
+  font-weight: 700;                                                             /* Gras */
+  letter-spacing: 0.3px;                                                        /* Espacement lettres */
+  text-decoration: none;                                                        /* Pas de soulignement */
+  box-shadow: 0 6px 16px rgba(0, 0, 145, 0.25);                                 /* Ombre portée */
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;  /* Transitions */
+}
+
+.retour-wrapper a::before {
+  content: "←";                                                                 /* Flèche retour */
+  font-size: 1.125rem;                                                          /* Taille flèche */
+}
+
+.retour-wrapper a:hover {
+  background: linear-gradient(120deg, rgba(70, 95, 157, 0.85), rgba(70, 95, 157, 0.95), rgba(70, 95, 157, 1));
+  transform: translateY(-1px);                                                  /* Léger soulèvement */
+  box-shadow: 0 10px 22px rgba(0, 0, 145, 0.32);                                /* Ombre plus forte */
+}
+
+.footer-rmd {
+  background: linear-gradient(120deg, rgba(70, 95, 157, 0.75), rgba(70, 95, 157, 0.85), rgba(70, 95, 157, 1));
+  color: white;                                                                 /* Texte blanc */
+  text-align: center;                                                           /* Centré */
+  padding: 1rem 1.5rem;                                                         /* Padding interne */
+  margin: 0;                                                                    /* Pas de marge */
+  font-weight: 600;                                                             /* Semi-gras */
+  font-size: 0.875rem;                                                          /* Taille 14px */
+}
+
+.footer-rmd p {
+  margin: 0.25rem 0;                                                            /* Marges minimales */
+}
+
+.footer-rmd p a {
+  color: #E8EDFF;                                                               /* Bleu clair */
+  text-decoration: none;                                                        /* Pas de soulignement */
+  transition: color 0.3s ease;                                                  /* Transition douce */
+}
+
+.footer-rmd p a:hover {
+  color: #ffffff;                                                               /* Blanc au hover */
+  text-decoration: underline;                                                   /* Soulignement hover */
+}
+
+.icon {
+  width: 1.25em;                                                                /* Largeur relative */
+  height: 1.25em;                                                               /* Hauteur relative */
+  vertical-align: middle;                                                       /* Alignement vertical */
+  flex-shrink: 0;                                                               /* Ne pas réduire */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 10bis. STYLES SPÉCIFIQUES AVERTISSEMENT (modal/iframe)                        ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+.titre-avertissement-principal,
+.titre-avertissement-sous {
+  color: white !important;
+  z-index: 2;
+  position: relative;
+}
+.image_avertissement_bg h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white !important;
+}
+
+/* Version simple (sans bandeau) pour modal/iframe */
+.text-avertissement-cadre {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  padding: 2rem 2.5rem 2.5rem;                                                  /* Padding généreux */
+  font-size: 1.25rem;                                                         /* Police 15px - réduite */
+  line-height: 1.7;                                                             /* Interligne aéré */
+  height: 100%;                                                                /* Pleine hauteur */
+}
+
+.text-avertissement-cadre p {
+  margin: 0 0 1rem;                                                             /* Marge basse */
+  text-align: left;                                                             /* Aligné gauche */
+}
+
+.text-avertissement-cadre p:first-child {
+  color: #3A3A3A;                                                               /* Gris texte */
+  padding: 1rem 1.25rem;                                                        /* Padding interne */
+  background: cornsilk;                                                         /* Fond cornsilk */
+  border-left: 4px solid #000091;                                               /* Accent bleu France */
+  border-radius: 0 4px 4px 0;                                                   /* Coins arrondis droite */
+  margin-bottom: 1.5rem;                                                        /* Marge basse plus grande */
+}
+
+.text-avertissement-cadre strong {
+  color: #c43b3e;                                                               /* Orange warning */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-avertissement-cadre em {
+  color: #161616;                                                               /* Gris titre */
+  font-style: italic;                                                           /* Italique */
+  display: block;                                                               /* Bloc pour marge */
+  margin: 1.5rem 0 0.75rem;                                                     /* Marges verticales */
+  font-weight: 600;                                                             /* Semi-gras */
+}
+
+.text-avertissement-cadre ul {
+  padding-left: 0;                                                              /* Pas de padding gauche */
+  list-style: none;                                                             /* Supprime puces par défaut */
+  margin: 0.5rem 0 1.25rem;                                                     /* Marges verticales */
+  line-height: 1.7;                                                             /* Interligne aéré */
+}
+
+.text-avertissement-cadre ul li {
+  position: relative;                                                           /* Pour puce custom */
+  padding-left: 1.25rem;                                                        /* Espace pour tiret */
+  margin-bottom: 0.625rem;                                                      /* Espacement items */
+}
+
+.text-avertissement-cadre ul li::before {
+  content: "–";                                                                 /* Tiret comme puce */
+  position: absolute;                                                           /* Positionnement absolu */
+  left: 0;                                                                      /* À gauche */
+  color: #000091;                                                               /* Bleu France */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-avertissement-cadre ul li:last-child {
+  margin-bottom: 0;                                                             /* Pas de marge dernier item */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 11. RESPONSIVE DESIGN                                                         ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 15px;                                                            /* Taille réduite mobile */
+  }
+
+  .main-wrapper {
+    margin: 15px auto;                                                          /* Marges réduites */
+    padding: 0 10px;                                                            /* Padding réduit */
+  }
+
+  .bloc-aide-cadre,
+  .bloc-confidentialite-cadre,
+  .bloc-mlegales-cadre,
+  .bloc-avertissement-cadre {
+    border-radius: 8px;                                                         /* Coins moins arrondis */
+  }
+
+  .image_aide_bg,
+  .image_confidentialite_bg,
+  .image_mlegales_bg,
+  .image_avertissement_bg {
+    padding: 1.75rem 1.5rem 1.5rem;                                             /* Padding réduit */
+  }
+
+  .image_aide_bg h2,
+  .image_confidentialite_bg h2,
+  .image_mlegales_bg h2,
+  .image_avertissement_bg h2 {
+    font-size: 1.375rem;                                                        /* Titre plus petit */
+  }
+
+  .bloc-texte-aide-cadre,
+  .bloc-texte-confidentialite-cadre,
+  .bloc-texte-mlegales-cadre,
+  .bloc-texte-avertissement-cadre,
+  .text-avertissement-cadre {
+    padding: 1.5rem;                                                            /* Padding réduit */
+  }
+
+  .entete-prefete {
+    flex-direction: column;                                                     /* Empilage vertical */
+    align-items: flex-start;                                                    /* Aligné à gauche */
+    padding: 1rem 1.25rem;                                                      /* Padding réduit */
+    gap: 0.75rem;                                                               /* Gap réduit */
+  }
+
+  .logo-prefete {
+    height: 55px;                                                               /* Logo plus petit */
+  }
+
+  .bloc-texte-aide-cadre h2,
+  .bloc-texte-confidentialite-cadre h2,
+  .bloc-texte-mlegales-cadre h2,
+  .bloc-texte-avertissement-cadre h2 {
+    font-size: 1.125rem;                                                        /* Taille réduite */
+  }
+
+  .etapes li {
+    padding-left: 3rem !important;                                              /* Espace réduit */
+  }
+
+  .etapes li::before {
+    width: 2rem;                                                                /* Badge plus petit */
+    height: 2rem;                                                               /* Badge plus petit */
+    font-size: 0.875rem;                                                        /* Taille réduite */
+  }
+
+  .bloc-texte-aide-cadre table {
+    font-size: 0.875rem;                                                        /* Texte plus petit */
+  }
+
+  .bloc-texte-aide-cadre th,
+  .bloc-texte-aide-cadre td {
+    padding: 0.625rem 0.875rem;                                                 /* Padding réduit */
+  }
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 12. IMPRESSION                                                                ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+@media print {
+  body {
+    background: white !important;                                               /* Fond blanc */
+    background-image: none !important;                                          /* Pas d'image */
+  }
+
+  .main-wrapper {
+    max-width: 100%;                                                            /* Pleine largeur */
+    margin: 0;                                                                  /* Pas de marge */
+    padding: 0;                                                                 /* Pas de padding */
+  }
+
+  .bloc-aide-cadre,
+  .bloc-confidentialite-cadre,
+  .bloc-mlegales-cadre {
+    box-shadow: none;                                                           /* Pas d'ombre */
+    border: 1px solid #ccc;                                                     /* Bordure simple */
+  }
+
+  .image_aide_bg,
+  .image_confidentialite_bg,
+  .image_mlegales_bg {
+    print-color-adjust: exact;                                                  /* Préserve couleurs */
+    -webkit-print-color-adjust: exact;                                          /* Webkit */
+  }
+
+  .encadre-info,
+  .encadre-warning,
+  .conseil,
+  .bloc-contact,
+  table {
+    break-inside: avoid;                                                        /* Évite coupure */
+  }
+
+  h2 {
+    break-after: avoid;                                                         /* Garde H2 avec contenu */
+  }
+
+  .retour-wrapper {
+    display: none;                                                              /* Cache bouton retour */
+  }
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 13. ACCESSIBILITÉ                                                             ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+:focus-visible {
+  outline: 2px solid #000091;                                                   /* Contour focus bleu */
+  outline-offset: 2px;                                                          /* Décalage contour */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;                                      /* Désactive animations */
+    animation-iteration-count: 1 !important;                                    /* Une seule itération */
+    transition-duration: 0.01ms !important;                                     /* Désactive transitions */
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FIN DU FICHIER rmd.css
+   ═══════════════════════════════════════════════════════════════════════════════ */

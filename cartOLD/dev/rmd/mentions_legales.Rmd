@@ -1,0 +1,60 @@
+---
+output:
+  html_document:
+    self_contained: true
+    theme: null 
+    mathjax: null
+    toc: false
+    css: rmd.css
+---
+
+<div class="main-wrapper">
+<div class="bloc-mlegales-cadre">
+<div class="image_mlegales_bg">
+## MENTIONS LEGALES
+</div>
+
+<div class="bloc-texte-mlegales-cadre">
+## Éditeur de l'application
+- **Nom :** Direction Départementale des Territoires (DDT) de la Drôme – Préfecture de la Drôme
+- **Responsable de publication :** Pierre BARBERA (DDT de la Drôme).
+- **Contact :** ddt-sefen-pf@drome.gouv.fr.
+
+## Objet de l'application
+cartOLD est une application Shiny modulaire de cartographie interactive permettant la visualisation de couches géographiques (communes, OLD200, parcelles, etc.) pour le territoire de la Drôme. L'application est diffusée sous licence GPL (≥ 3).
+
+## Hébergement
+L'application est déployée sur shinyapps.io, service opéré par Posit Software, PBC (ancienne RStudio, PBC). L'hébergement assure une connexion sécurisée HTTPS lors de l'accès à l'application.
+
+## Propriété intellectuelle
+- Le code source de l'application est diffusé sous **LICENCE R22-CRIS**. Toute réutilisation doit respecter les termes de cette licence.
+- Les contenus cartographiques proviennent de jeux de données détenus par la DDT de la Drôme et/ou d'autres producteurs publics identifiés dans l'application. La réutilisation de ces données demeure soumise aux licences propres à chaque jeu de données.
+
+## Responsabilités
+- La DDT de la Drôme s'efforce de fournir des informations à jour et exactes. Toutefois, aucune garantie n'est apportée quant à l'exactitude, la complétude ou l'actualité des données diffusées.
+- L'utilisateur reste responsable de l'interprétation et de l'usage des informations cartographiques proposées.
+- La DDT de la Drôme ne saurait être tenue responsable des dommages directs ou indirects liés à l'utilisation de l'application ou des données qu'elle présente.
+
+## Accessibilité et disponibilité
+L'application est accessible en ligne, sous réserve des opérations de maintenance ou des interruptions liées au service d'hébergement. En cas de dysfonctionnement constaté, vous pouvez en informer l'équipe via l'adresse de contact indiquée ci-dessus.
+
+## Liens hypertextes
+L'application peut contenir des liens vers d'autres sites publics ou institutionnels. La DDT de la Drôme n'exerce pas de contrôle sur ces sites et n'assume aucune responsabilité quant à leurs contenus.
+</div>
+
+<footer class="footer-rmd">
+<p>
+<a href="/www/html/mentions_legales.html" target="_blank">Mentions légales</a> |
+<a href="/www/html/confidentialite.html" target="_blank">Confidentialité</a> |
+Préfète de la Drôme – DDT de la Drôme
+</p>
+
+<p>© 2025 – Version statique</p>
+</footer>
+</div>
+<div class="retour-wrapper">
+<a href="/#accueil">Retour à l’accueil</a>
+</div>
+
+
+</div>

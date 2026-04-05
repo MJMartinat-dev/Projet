@@ -1,0 +1,63 @@
+---
+output:
+  html_document:
+    self_contained: true
+    theme: null 
+    mathjax: null
+    toc: false
+    css: rmd.css
+---
+
+<div class="main-wrapper">
+<div class="bloc-confidentialite-cadre">
+<div class="image_confidentialite_bg">
+##    POLITIQUE DE CONFIDENTIALITE ET COOKIES
+</div>
+
+<div class="bloc-texte-confidentialite-cadre">
+## Données collectées et finalités
+- L'application ne requiert pas de compte utilisateur et ne collecte pas de données personnelles saisies par les utilisateurs.
+- Des journaux techniques (logs) standard peuvent être générés par la plateforme d'hébergement (adresse IP, horodatage, URL consultée) uniquement pour assurer la sécurité, le diagnostic des incidents et l'amélioration de la performance.
+- Les données cartographiques affichées ne contiennent pas d'informations à caractère personnel.
+
+## Base légale
+Le traitement des journaux techniques repose sur l'intérêt légitime de l'éditeur pour assurer la sécurité et la continuité du service public d'information géographique.
+
+## Durée de conservation
+Les journaux techniques éventuellement conservés par la plateforme d'hébergement le sont pour des durées limitées au strict nécessaire à la sécurité et à l'exploitation du service. Les données cartographiques ne sont pas associées à des identifiants personnels.
+
+## Destinataires
+Les données techniques sont accessibles aux équipes habilitées de la DDT de la Drôme et, le cas échéant, au prestataire d'hébergement pour le support et la maintenance du service.
+
+## Sécurité
+L'accès à l'application se fait via HTTPS. L'éditeur met en œuvre des mesures techniques et organisationnelles proportionnées pour préserver la confidentialité et l'intégrité des informations diffusées.
+
+## Droits des utilisateurs
+Si des données personnelles étaient exceptionnellement collectées (par exemple via un formulaire de contact ajouté ultérieurement), les utilisateurs bénéficieraient des droits d'accès, de rectification, d'effacement, de limitation et d'opposition prévus par le RGPD et la loi Informatique et Libertés. Toute demande peut être adressée à ddt-sefen-pf@drome.gouv.fr.
+
+## Réclamation auprès de la CNIL
+Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la [Commission Nationale de l’Informatique et des Libertés (CNIL)](https://www.cnil.fr).
+
+## Cookies et traceurs
+L'application n'installe pas de cookies de profilage. Les seuls traceurs éventuels sont les cookies strictement nécessaires au fonctionnement de la session Shiny ou ceux utilisés par la plateforme d'hébergement pour des besoins techniques.
+
+## Évolution de la politique
+La présente politique peut être mise à jour pour refléter les évolutions de l'application ou du cadre réglementaire. La date de la dernière mise à jour doit être indiquée lors de chaque nouvelle publication.
+</div>
+
+
+<footer class="footer-rmd">
+<p>
+<a href="/www/html/mentions_legales.html" target="_blank">Mentions légales</a> |
+<a href="/www/html/confidentialite.html" target="_blank">Confidentialité</a> |
+Préfète de la Drôme – DDT de la Drôme
+</p>
+
+<p>© 2025 – Version statique</p>
+</footer>
+</div>
+
+<div class="retour-wrapper">
+<a href="/#accueil">Retour à l’accueil</a>
+</div>
+</div>

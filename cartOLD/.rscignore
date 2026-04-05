@@ -1,0 +1,48 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# FICHIER       : .rscignore
+# AUTEUR        : MJ Martinat
+# DATE          : 2025
+# ORGANISATION  : DDT de la Drôme
+# OBJET         : Liste des fichiers/dossiers exclus du déploiement shinyapps.io
+#                 (équivalent RStudio Connect / rsconnect)
+# ──────────────────────────────────────────────────────────────────────────────
+# ── CONTRÔLE DE VERSION ────────────────
+^\\.git$                 # Dépôt Git
+^\\.gitignore$           # Fichier d'exclusion Git
+^\\.github$              # Dossier workflows GitHub Actions
+
+# ── ENVIRONNEMENT R / RSTUDIO ──────────
+^\\.Rproj\\.user$        # Données utilisateur RStudio
+^.*\\.Rproj$             # Projet RStudio (.Rproj)
+^\\.Rhistory$            # Historique R
+^\\.RData$               # Workspace R
+^\\.Ruserdata$           # Données utilisateur R
+
+# ── ENVIRONNEMENTS ISOLÉS ─────────────
+^packrat/                # Environnement packrat
+^renv/                   # Environnement renv
+
+# ── DOCUMENTATION & DÉVELOPPEMENT ─────
+^README\\.md$            # Documentation principale
+^NEWS\\.md$              # Notes de version
+^LICENSE\\.md$           # Licence
+^dev$                    # Scripts de développement
+^data-raw$               # Données brutes non packagées
+^doc$                    # Documentation additionnelle
+^docs$                   # Documentation pkgdown
+^Meta$                   # Métadonnées build
+^vignettes$              # Vignettes R
+
+# ── TESTS ────────────────────────────
+^tests$                  # Tests unitaires
+
+# ── CONFIGURATION DE BUILD ───────────
+^\\.Rbuildignore$        # R build ignore
+^_pkgdown\\.yml$         # Configuration pkgdown
+
+# ── DÉPLOIEMENT ──────────────────────
+^rsconnect$              # Configuration déploiement shinyapps.io
+
+# ──────────────────────────────────────────────────────────────────────────────
+# FIN DU FICHIER
+# ──────────────────────────────────────────────────────────────────────────────

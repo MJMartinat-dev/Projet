@@ -1,0 +1,2056 @@
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FICHIER     : style.css
+   AUTEUR      : Marie-Jeanne MARTINAT
+   DATE        : 2025
+   ORGANISATION: DDT de la Drôme - Préfecture de la Drôme
+   APPLICATION : cartOLD - Cartographie des Obligations Légales de Débroussaillement
+   DESCRIPTION : Feuille de styles principale de l'application Shiny
+                 ─────────────────────────────────────────────────────────────────
+                 SOMMAIRE :
+                 1. RESET ET STYLES GLOBAUX
+                 2. CONTENEURS PRINCIPAUX
+                 3. BARRE DE NAVIGATION (NAVBAR)
+                 4. ZONE DE CONTENU (TAB-CONTENT)
+                 5. PAGES ACCUEIL / AIDE / AVERTISSEMENT
+                 6. MODALE D'AVERTISSEMENT
+                 7. SIDEBAR ET CARTE LEAFLET
+                 8. CONTRÔLES CARTOGRAPHIQUES
+                 9. LÉGENDE DYNAMIQUE
+                 10. SYSTÈME MAPMENU + DOCK
+                 11. OUTIL DE MESURE
+                 12. OVERLAY AIDE CARTE
+                 13. PIED DE PAGE
+                 14. RESPONSIVE DESIGN
+                 15. MODE EXPORT
+                 16. ACCESSIBILITÉ
+                 ─────────────────────────────────────────────────────────────────
+   PALETTE COULEURS DSFR :
+                 - Bleu France      : #000091
+                 - Bleu DSFR        : #465F9D
+                 - Rouge Marianne   : #E1000F
+                 - Orange action    : #c43b3e / #f43b3e (hover)
+                 - Fond principal   : cornsilk / #f5f5dc
+                 - Fond application : #f3f5fa
+                 - Texte principal  : #2c3e50
+                 - Texte secondaire : #3A3A3A
+                 - Gris bordure     : #E5E5E5
+   ═══════════════════════════════════════════════════════════════════════════════ */
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 1. RESET ET STYLES GLOBAUX                                                    ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+html, body {
+  margin: 0;                                                                    /* Supprime marges navigateur */
+  padding: 0;                                                                   /* Supprime padding navigateur */
+  width: 100%;                                                                  /* Pleine largeur viewport */
+  height: 100%;                                                                 /* Pleine hauteur viewport */
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;                /* Police système moderne */
+  background: cornsilk;                                                          /* Fond gris-bleu clair */
+  overflow-x: hidden;                                                           /* Empêche scroll horizontal */
+  overflow-y: auto;                                                             /* Autorise scroll vertical */
+  scroll-behavior: smooth;                                                      /* Défilement fluide */
+  -webkit-overflow-scrolling: touch;                                            /* Scroll fluide iOS */
+  -webkit-font-smoothing: antialiased;                                          /* Lissage polices WebKit */
+  -moz-osx-font-smoothing: grayscale;                                           /* Lissage polices Firefox */
+}
+
+* {
+  box-sizing: border-box;                                                       /* Inclut padding/border dans dimensions */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;                                                         /* Hérite police parente */
+  font-weight: 700;                                                             /* Titres en gras */
+  margin-top: 0;                                                                /* Supprime marge haute */
+  color: #2c3e50;                                                               /* Bleu-gris foncé */
+  text-align: center;                                                           /* Centrage par défaut */
+}
+
+a {
+  color: #465F9D;                                                               /* Bleu DSFR liens */
+  text-decoration: none;                                                        /* Sans soulignement */
+  transition: color 0.2s ease;                                                  /* Transition douce */
+}
+
+a:hover {
+  text-decoration: underline;                                                   /* Soulignement au survol */
+  color: #000091;                                                               /* Bleu France au survol */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 2. CONTENEURS PRINCIPAUX                                                      ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.bslib-page-navbar .container-fluid {
+  margin: 0;                                                                    /* Pas de marge */
+  padding: 0;                                                                   /* Pas de padding */
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  overflow-x: hidden;                                                           /* Pas de scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical si besoin */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 3. BARRE DE NAVIGATION (NAVBAR)                                               ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.navbar.navbar-default.navbar-static-top {
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 60px;                                                                 /* Hauteur fixe */
+  min-height: 60px;                                                             /* Hauteur minimale */
+  margin: 0 !important;                                                         /* Force pas de marge */
+  padding: 0 !important;                                                        /* Force pas de padding */
+  background: linear-gradient(120deg,                                           /* Dégradé bleu DSFR */
+                              rgba(70, 95, 157, 0.75),
+                              rgba(70, 95, 157, 0.85),
+                              rgba(70, 95, 157, 1)) !important;
+  border: none !important;                                                      /* Pas de bordure */
+  display: flex !important;                                                     /* Disposition flex */
+  align-items: center !important;                                               /* Centre verticalement */
+  justify-content: space-between !important;                                    /* Espace entre éléments */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);                                     /* Ombre légère */
+  z-index: 1000;                                                                /* Au-dessus du contenu */
+}
+
+.navbar.navbar-default.navbar-static-top .container-fluid {
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  margin: 0 !important;                                                         /* Pas de marge */
+  padding: 0 !important;                                                        /* Pas de padding */
+  display: flex !important;                                                     /* Disposition flex */
+  align-items: center !important;                                               /* Centre verticalement */
+  justify-content: space-between !important;                                    /* Espace entre éléments */
+}
+
+.navbar-header {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre verticalement */
+  height: 100%;                                                                 /* Pleine hauteur */
+  margin: 0 !important;                                                         /* Pas de marge */
+  padding: 0 !important;                                                        /* Pas de padding */
+}
+
+.navbar-brand {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre verticalement */
+  height: 100% !important;                                                      /* Pleine hauteur */
+  padding: 0 !important;                                                        /* Pas de padding */
+  margin: 0 !important;                                                         /* Pas de marge */
+  color: #ffffff !important;                                                    /* Texte blanc */
+  text-transform: uppercase;                                                    /* Majuscules */
+  font-size: 1.8em !important;                                                  /* Grande taille */
+  font-weight: 700 !important;                                                  /* Gras */
+  line-height: 1 !important;                                                    /* Hauteur ligne serrée */
+  letter-spacing: 1px;                                                          /* Espacement lettres */
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #ffffff !important;                                                    /* Reste blanc au survol */
+  text-decoration: none;                                                        /* Pas de soulignement */
+}
+
+/* Liste des onglets navbar */
+#b-nav {
+  display: flex !important;                                                     /* Disposition flex */
+  flex: 1 1 auto !important;                                                    /* Occupe espace disponible */
+  align-items: center !important;                                               /* Centre verticalement */
+  justify-content: flex-start !important;                                       /* Aligné à gauche */
+  margin: 0 !important;                                                         /* Pas de marge */
+  padding-left: 100px !important;                                               /* Décalage gauche */
+  height: 100% !important;                                                      /* Pleine hauteur */
+  list-style: none;                                                             /* Pas de puces */
+  gap: 25px;                                                                    /* Espacement entre items */
+}
+
+#b-nav > li {
+  margin: 0;                                                                    /* Pas de marge */
+  padding: 0;                                                                   /* Pas de padding */
+  height: 100%;                                                                 /* Pleine hauteur */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre verticalement */
+}
+
+#b-nav > li > a {
+  color: #ffffff !important;                                                    /* Texte blanc */
+  font-size: 1.1em !important;                                                  /* Taille texte */
+  font-variant: small-caps !important;                                          /* Petites majuscules */
+  display: flex !important;                                                     /* Disposition flex */
+  align-items: center !important;                                               /* Centre verticalement */
+  padding: 12px 20px !important;                                                /* Padding interne */
+  height: 100% !important;                                                      /* Pleine hauteur */
+  transition: all 0.3s ease;                                                    /* Transition douce */
+  border-bottom: 3px solid transparent;                                         /* Bordure invisible */
+}
+
+#b-nav > li > a:hover {
+  background-color: rgba(255, 255, 255, 0.1);                                   /* Fond blanc transparent */
+  border-bottom: 3px solid #f43b3e !important;                                  /* Bordure orange survol */
+}
+
+#b-nav > li.active > a,
+#b-nav > li.active > a:focus,
+#b-nav > li.active > a:hover {
+  background-color: #c43b3e !important;                                         /* Fond orange actif */
+  color: #465F9D !important;                                                    /* Texte bleu DSFR */
+  font-weight: 700 !important;                                                  /* Gras */
+  border-bottom: 3px solid #465F9D !important;                                  /* Bordure bleue */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 4. ZONE DE CONTENU (TAB-CONTENT)                                              ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.tab-content {
+  position: relative !important;                                                /* Position relative */
+  width: 100% !important;                                                       /* Pleine largeur */
+  height: calc(100vh - 35px) !important;                                        /* Hauteur viewport - navbar */
+  margin: 0 !important;                                                         /* Pas de marge */
+  padding: 0 !important;                                                        /* Pas de padding */
+  overflow-y: auto !important;                                                  /* Scroll vertical */
+  overflow-x: hidden !important;                                                /* Pas de scroll horizontal */
+  background-image: url("../images/feux_sud_est.png");                          /* Image de fond */
+  background-size: cover;                                                       /* Couvre tout l'espace */
+  background-position: center;                                                  /* Centré */
+  background-attachment: fixed;                                                 /* Fond fixe au scroll */
+}
+
+.tab-pane {
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  padding: 0 !important;                                                        /* Pas de padding */
+  margin: 0 !important;                                                         /* Pas de marge */
+  background: transparent !important;                                           /* Fond transparent */
+}
+
+.tab-pane.active {
+  display: block !important;                                                    /* Affiche onglet actif */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 5. PAGES ACCUEIL / AIDE / AVERTISSEMENT                                       ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ─── Cadres principaux ─── */
+.bloc-accueil-cadre,
+.bloc-aide-cadre {
+  width: 80%;                                                                   /* 80% de largeur */
+  margin: 5% 10%;                                                               /* Marges 5% vertical, 10% horizontal */
+  padding: 0;                                                                   /* Pas de padding */
+  min-height: calc(100vh - 60px);                                               /* Hauteur min visible */
+  height: auto;                                                                 /* Hauteur automatique */
+  overflow-x: hidden;                                                           /* Pas de scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical possible */
+  border-radius: 10px;                                                          /* Coins arrondis */
+}
+
+.bloc-accueil-cadre iframe,
+.bloc-aide-cadre iframe {
+  border: none;                                                                 /* Pas de bordure */
+  min-height: 100vh;                                                            /* Hauteur min viewport */
+  overflow-x: hidden;                                                           /* Pas de scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  border-radius: 10px;                                                          /* Coins arrondis */
+  height: inherit;                                                              /* Hérite hauteur parent */
+}
+
+/* ─── Zones de texte ─── */
+.text-accueil-cadre,
+.text-aide-cadre {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  padding: 50px 50px 0px 50px;                                                  /* Padding généreux */
+  min-height: 100vh;                                                            /* Hauteur min viewport */
+  border-radius: 10px;                                                          /* Coins arrondis */
+}
+
+/* ─── Titres page aide ─── */
+.text-aide-cadre h2,
+.text-aide-cadre h3 {
+  text-align: center;                                                           /* Centré */
+  text-justify: inter-word;                                                     /* Justification mots */
+  text-decoration: underline;                                                   /* Souligné */
+  text-decoration-style: double;                                                /* Double soulignement */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-aide-cadre h2 {
+  position: relative;                                                           /* Position relative */
+  font-weight: 700;                                                             /* Gras */
+  text-align: justify;                                                          /* Justifié */
+  text-justify: inter-word;                                                     /* Justification mots */
+  padding-top: 18px;                                                            /* Espace avant trait */
+  margin-top: 24px;                                                             /* Marge haute */
+}
+
+.text-aide-cadre h2::before {
+  content: "";                                                                  /* Contenu vide */
+  display: block;                                                               /* Affichage bloc */
+  width: 60%;                                                                   /* Largeur trait */
+  margin: 12px auto 12px auto;                                                  /* Centrage horizontal */
+  border-bottom: 4px double #465F9D;                                            /* Trait double bleu */
+}
+
+.text-aide-cadre h3,
+.text-aide-cadre h4 {
+  position: relative;                                                           /* Position relative */
+  font-weight: 700;                                                             /* Gras */
+  text-align: justify;                                                          /* Justifié */
+  text-justify: inter-word;                                                     /* Justification mots */
+  padding-top: 18px;                                                            /* Espace avant trait */
+  margin-top: 24px;                                                             /* Marge haute */
+}
+
+.text-aide-cadre h3::before,
+.text-aide-cadre h4::before {
+  content: "";                                                                  /* Contenu vide */
+  display: block;                                                               /* Affichage bloc */
+  width: 40%;                                                                   /* Largeur trait */
+  margin: 12px auto 12px auto;                                                  /* Centrage horizontal */
+  border-bottom: 2px solid #465F9D;                                             /* Trait simple bleu */
+}
+
+.text-aide-cadre h5 {
+  text-align: justify;                                                          /* Justifié */
+  text-justify: inter-word;                                                     /* Justification mots */
+  text-decoration: underline;                                                   /* Souligné */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-aide-cadre h6 {
+  text-align: justify;                                                          /* Justifié */
+  text-justify: inter-word;                                                     /* Justification mots */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.bloc-texte-accueil-cadre,
+.bloc-texte-aide-cadre {
+  margin-top: 40px;                                                             /* Marge haute */
+}
+
+.image_accueil_bg,
+.image_aide_bg {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  padding: 50px;                                                                /* Padding généreux */
+  overflow-x: hidden;                                                           /* Pas de scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  border-radius: 10px;                                                          /* Coins arrondis */
+  height: inherit;                                                              /* Hérite hauteur */
+}
+
+.text_accueil_bg h3,
+.text_accueil_bg h4 {
+  margin-top: 20px;                                                             /* Marge haute */
+  font-family: inherit;                                                         /* Hérite police */
+  font-weight: 700;                                                             /* Gras */
+  color: #2c3e50;                                                               /* Bleu-gris foncé */
+}
+
+div#bienvenue-sur-cartold {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  padding: 25px;                                                                /* Padding */
+}
+
+/* ─── Page avertissement ─── */
+.bloc-avertissement-cadre {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  width: 80%;                                                                   /* 80% largeur */
+  margin: 5% 10%;                                                               /* Marges */
+  padding: 0;                                                                   /* Pas de padding */
+  min-height: calc(100vh - 175px);                                              /* Hauteur min */
+  height: auto;                                                                 /* Hauteur auto */
+  overflow-x: hidden;                                                           /* Pas scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  border-radius: 10px;                                                          /* Coins arrondis */
+}
+
+.titre-avertissement-principal {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  margin-top: 5px;                                                              /* Marge haute */
+  margin-bottom: 20px;                                                          /* Marge basse */
+  padding: 25px;                                                                /* Padding */
+  color: #2c3e50;                                                               /* Bleu-gris foncé */
+  text-align: center;                                                           /* Centré */
+  font-size: 2em;                                                               /* Grande taille */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.titre-avertissement-sous {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  margin-bottom: 10px;                                                          /* Marge basse */
+  margin-top: 10px;                                                             /* Marge haute */
+  padding: 25px;                                                                /* Padding */
+  color: #34495e;                                                               /* Gris-bleu */
+  font-size: 2em;                                                               /* Grande taille */
+  font-variant: petite-caps;                                                    /* Petites capitales */
+  font-weight: bold;                                                            /* Gras */
+  text-align: center;                                                           /* Centré */
+}
+
+.bloc-avertissement-cadre iframe {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  border: none;                                                                 /* Pas de bordure */
+  width: 100%;                                                                  /* Pleine largeur */
+  min-height: 75vh;                                                             /* Hauteur min 75% viewport */
+  height: 100%;                                                                 /* Pleine hauteur */
+  padding: 25px;                                                                /* Padding */
+  align-content: center;                                                        /* Centrage contenu */
+  text-align: justify;                                                          /* Justifié */
+}
+.iframe-avertissement {
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  border: none !important;
+  display: block !important;
+}
+
+.text-avertissement-cadre {
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+  padding: 2rem 2.5rem 2.5rem;                                                  /* Padding généreux */
+  font-size: 1.25rem;                                                         /* Police 15px - réduite */
+  line-height: 1.7;                                                             /* Interligne aéré */
+  height: 100%;
+}
+
+.text-avertissement-cadre p {
+  margin: 0 0 1rem;                                                             /* Marge basse */
+  text-align: left;                                                             /* Aligné gauche */
+}
+
+.text-avertissement-cadre p:first-child {
+  color: #3A3A3A;                                                               /* Gris texte */
+  padding: 1rem 1.25rem;                                                        /* Padding interne */
+  background: cornsilk;                                                         /* Fond cornsilk */
+  border-left: 4px solid #000091;                                               /* Accent bleu France */
+  border-radius: 0 4px 4px 0;                                                   /* Coins arrondis droite */
+  margin-bottom: 1.5rem;                                                        /* Marge basse plus grande */
+}
+
+.text-avertissement-cadre strong {
+  color: #c43b3e;                                                               /* Orange warning */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-avertissement-cadre em {
+  color: #161616;                                                               /* Gris titre */
+  font-style: italic;                                                           /* Italique */
+  display: block;                                                               /* Bloc pour marge */
+  margin: 1.5rem 0 0.75rem;                                                     /* Marges verticales */
+  font-weight: 600;                                                             /* Semi-gras */
+}
+
+.text-avertissement-cadre ul {
+  padding-left: 0;                                                              /* Pas de padding gauche */
+  list-style: none;                                                             /* Supprime puces par défaut */
+  margin: 0.5rem 0 1.25rem;                                                     /* Marges verticales */
+  line-height: 1.7;                                                             /* Interligne aéré */
+}
+
+.text-avertissement-cadre ul li {
+  position: relative;                                                           /* Pour puce custom */
+  padding-left: 1.25rem;                                                        /* Espace pour tiret */
+  margin-bottom: 0.625rem;                                                      /* Espacement items */
+}
+
+.text-avertissement-cadre ul li::before {
+  content: "–";                                                                 /* Tiret comme puce */
+  position: absolute;                                                           /* Positionnement absolu */
+  left: 0;                                                                      /* À gauche */
+  color: #000091;                                                               /* Bleu France */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.text-avertissement-cadre ul li:last-child {
+  margin-bottom: 0;                                                             /* Pas de marge dernier item */
+}
+
+#cartographie-indicative-des-obligations-légales-de-débroussaillements {
+  margin-top: 75px;                                                             /* Grande marge haute */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 6. MODALE D'AVERTISSEMENT                                                     ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+#avertissementModal .modal-content {
+  border-left: 6px solid #c43b3e !important;                                    /* Bande orange gauche */
+  background: #fff8e1;                                                          /* Fond crème clair */
+  border-radius: 8px;                                                           /* Coins arrondis */
+  padding: 0.5rem 0.75rem;                                                      /* Padding */
+  font-size: 1.25rem;
+}
+
+#avertissementModal .modal-header h4.modal-title {
+  font-weight: 700;                                                             /* Gras */
+  margin: 0 0 .5rem 0;                                                          /* Marge basse */
+  color: white;                                                                 /* Texte blanc */
+}
+
+#avertissementModal .modal-body {
+  line-height: 1.5;                                                             /* Interligne aéré */
+  padding: 1rem 1.1rem;                                                         /* Padding */
+}
+
+#avertissementModal .modal-body p {
+  margin: .5rem 0;                                                              /* Marges verticales */
+}
+
+#avertissementModal .modal-body ul {
+  margin: .5rem 0 0 1.2rem;                                                     /* Marges avec retrait */
+}
+
+#avertissementModal .modal-body li {
+  margin: .25rem 0;                                                             /* Espacement items */
+}
+
+#avertissementModal .modal-footer .btn-primary {
+  background-color: #c43b3e !important;                                         /* Fond orange */
+  border-color: #c43b3e !important;                                             /* Bordure orange */
+  color: #000;                                                                  /* Texte noir */
+  font-weight: 600;                                                             /* Semi-gras */
+  border-radius: 6px;                                                           /* Coins arrondis */
+}
+
+#avertissementModal .modal-footer .btn-primary:hover {
+  background-color: #f43b3e;                                                    /* Orange clair survol */
+  border-color: #f43b3e;                                                        /* Bordure assortie */
+}
+
+.modal-open .modal {
+  overflow-x: hidden;                                                           /* Pas scroll horizontal */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  z-index: 9999;                                                                /* Au-dessus de tout */
+  height: 100vh;                                                                /* Pleine hauteur */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 7. SIDEBAR ET CARTE LEAFLET                                                   ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+#content-app {
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: row;                                                          /* Horizontal */
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  min-height: calc(100vh - 60px);                                               /* Hauteur min */
+  overflow: hidden;                                                             /* Masque débordement */
+  position: relative;                                                           /* Position relative */
+  background: #f3f5fa;                                                          /* Fond gris-bleu */
+}
+
+/* ─── Sidebar gauche ─── */
+.sidebar-carte {
+  width: 300px;                                                                 /* Largeur fixe */
+  min-width: 300px;                                                             /* Largeur min */
+  background: #465F9D;                                                          /* Fond bleu DSFR */
+  color: #ffffff;                                                               /* Texte blanc */
+  padding: 20px;                                                                /* Padding */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  overflow-x: hidden;                                                           /* Pas scroll horizontal */
+  flex-shrink: 0;                                                               /* Ne rétrécit pas */
+  border-right: 2px solid #465F9D;                                              /* Bordure droite */
+  transition: transform 0.3s ease-in-out;                                       /* Transition douce */
+  z-index: 100;                                                                 /* Au-dessus carte */
+}
+
+.sidebar-carte label {
+  color: #ffffff;                                                               /* Labels blancs */
+  font-weight: 600;                                                             /* Semi-gras */
+  margin-bottom: 8px;                                                           /* Marge basse */
+  display: block;                                                               /* Affichage bloc */
+}
+
+.sidebar-carte .form-control {
+  background: #ffffff;                                                          /* Fond blanc */
+  border: 1px solid #ccc;                                                       /* Bordure grise */
+  color: #333;                                                                  /* Texte foncé */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  padding: 8px 12px;                                                            /* Padding */
+}
+
+.sidebar-carte .form-control:focus {
+  border-color: #c43b3e;                                                        /* Bordure orange focus */
+  outline: none;                                                                /* Pas de outline */
+  box-shadow: 0 0 0 3px rgba(196, 59, 62, 0.1);                                 /* Ombre légère */
+}
+
+.sidebar-carte .btn {
+  background: #c43b3e;                                                          /* Fond orange */
+  color: #ffffff;                                                               /* Texte blanc */
+  border: none;                                                                 /* Pas de bordure */
+  padding: 10px 20px;                                                           /* Padding */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  font-weight: 600;                                                             /* Semi-gras */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  transition: background 0.3s ease;                                             /* Transition */
+  margin-top: 10px;                                                             /* Marge haute */
+  width: 100%;                                                                  /* Pleine largeur */
+}
+
+.sidebar-carte .btn:hover {
+  background: #f43b3e;                                                          /* Orange clair survol */
+}
+
+.sidebar-carte .checkbox label {
+  color: #ffffff;                                                               /* Labels blancs */
+  font-weight: 400;                                                             /* Poids normal */
+  cursor: pointer;                                                              /* Curseur pointeur */
+}
+
+/* ─── Conteneur carte ─── */
+.conteneur-carte {
+  position: relative;                                                           /* Position relative */
+  flex: 1 1 auto;                                                               /* Occupe espace restant */
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  overflow: hidden;                                                             /* Masque débordement */
+  background: #f3f5fa;                                                          /* Fond gris-bleu */
+  margin-left: 50px;                                                            /* Décalage pour mapmenu */
+  transition: margin-left 0.3s ease;                                            /* Transition douce */
+}
+
+#carte_ui_1-carte {
+  width: 100% !important;                                                       /* Pleine largeur */
+  height: 100% !important;                                                      /* Pleine hauteur */
+  border: none;                                                                 /* Pas de bordure */
+  position: relative;                                                           /* Position relative */
+  z-index: 1;                                                                   /* Z-index bas */
+}
+
+#carte_ui_1-adresse_input {
+  color: black;                                                                 /* Texte noir */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 8. CONTRÔLES CARTOGRAPHIQUES                                                  ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ─── Contrôles zoom Leaflet ─── */
+.leaflet-control-zoom a,
+.leaflet-bar a {
+  background-color: #465F9D !important;                                         /* Fond bleu DSFR */
+  color: #ffffff !important;                                                    /* Texte blanc */
+  border-color: #465F9D !important;                                             /* Bordure bleue */
+}
+
+.leaflet-control-zoom a:hover {
+  background: #f43b3e !important;                                               /* Orange au survol */
+}
+
+.leaflet-control-zoom {
+  margin-top: 60px !important;                                                  /* Marge haute */
+  margin-left: 14px !important;                                                 /* Marge gauche */
+}
+
+.leaflet-touch .leaflet-bar button {
+  background-color: #465F9D !important;                                         /* Fond bleu DSFR */
+  color: #ffffff !important;                                                    /* Texte blanc */
+}
+
+.leaflet-control-scale {
+  display: none !important;                                                     /* Masque échelle native */
+}
+
+.leaflet-control-layers {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);                                     /* Ombre */
+  background: #465F9D;                                                          /* Fond bleu DSFR */
+  background-clip: border-box;                                                  /* Clip bordure */
+  border-radius: 5px;                                                           /* Coins arrondis */
+}
+
+.leaflet-control-layers.leaflet-control.leaflet-control-layers-expanded {
+  background-color: white;                                                      /* Fond blanc déplié */
+}
+
+.leaflet-left {
+  left: 0;                                                                      /* Aligné gauche */
+  margin-bottom: 25px;                                                          /* Marge basse */
+}
+
+/* ─── Échelle numérique ─── */
+.ctrl-echelle-num {
+  position: absolute;                                                           /* Position absolue */
+  bottom: 65px;                                                                 /* 65px du bas */
+  right: 14px;                                                                  /* 14px de droite */
+  z-index: 1200;                                                                /* Au-dessus carte */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+  background: rgba(255, 255, 255, 0);                                           /* Transparent */
+  padding: 6px 10px;                                                            /* Padding */
+  font-size: 0.85em;                                                            /* Taille texte */
+  font-family: "Open Sans", sans-serif;                                         /* Police */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);                                       /* Pas d'ombre */
+}
+
+.form-echelle-numerique {
+  margin: 0;                                                                    /* Pas de marge */
+  padding: 0;                                                                   /* Pas de padding */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+}
+
+.form-echelle-numerique span {
+  font-weight: 600;                                                             /* Semi-gras */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+#carte_ui_1-controls-echelle_num_valeur {
+  border: none;                                                                 /* Pas de bordure */
+  background: white;                                                            /* Fond blanc */
+  font-size: inherit;                                                           /* Hérite taille */
+  font-weight: 700;                                                             /* Gras */
+  color: #465F9D;                                                               /* Bleu DSFR */
+  outline: none;                                                                /* Pas de outline */
+  width: 50px;                                                                  /* Largeur fixe */
+  text-align: left;                                                             /* Aligné gauche */
+}
+
+/* ─── Échelle graphique ─── */
+.ctrl-echelle-graph {
+  position: absolute;                                                           /* Position absolue */
+  bottom: 25px;                                                                 /* 25px du bas */
+  right: 14px;                                                                  /* 14px de droite */
+  z-index: 1200;                                                                /* Au-dessus carte */
+  font-family: "Open Sans", sans-serif;                                         /* Police */
+  font-size: 0.75em;                                                            /* Taille texte */
+  background: rgba(255, 255, 255, 0);                                           /* Transparent */
+  padding: 4px 8px;                                                             /* Padding */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);                                       /* Pas d'ombre */
+}
+
+.barre-echelle-graph {
+  width: 100px;                                                                 /* Largeur fixe */
+  height: 10px;                                                                 /* Hauteur fixe */
+  border: 1px solid #000;                                                       /* Bordure noire */
+  display: flex;                                                                /* Disposition flex */
+  margin-bottom: 3px;                                                           /* Marge basse */
+}
+
+.segment-black {
+  background: #000;                                                             /* Segment noir */
+  flex: 1;                                                                      /* Flex égal */
+}
+
+.segment-white {
+  background: #fff;                                                             /* Segment blanc */
+  flex: 1;                                                                      /* Flex égal */
+}
+
+.labels-echelle-graph {
+  display: flex;                                                                /* Disposition flex */
+  justify-content: space-between;                                               /* Espace entre */
+  font-weight: 700;                                                             /* Gras */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+/* ─── Rose des vents ─── */
+.indicateur-nord {
+  position: absolute;                                                           /* Position absolue */
+  top: 10px;                                                                    /* 10px du haut */
+  left: 10px;                                                                   /* 10px de gauche */
+  z-index: 1200;                                                                /* Au-dessus carte */
+  width: 40px;                                                                  /* Largeur */
+  height: 50px;                                                                 /* Hauteur */
+  background: rgba(255, 255, 255, 0);                                           /* Transparent */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  align-items: center;                                                          /* Centre horizontal */
+  justify-content: center;                                                      /* Centre vertical */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);                                     /* Ombre légère */
+}
+
+.north-label {
+  font-weight: 700;                                                             /* Gras */
+  font-size: 1em;                                                               /* Taille normale */
+  color: #465F9D;                                                               /* Bleu DSFR */
+  margin-bottom: 4px;                                                           /* Marge basse */
+}
+
+.north-arrow {
+  width: 0;                                                                     /* Largeur 0 */
+  height: 0;                                                                    /* Hauteur 0 */
+  border-left: 8px solid transparent;                                           /* Triangle gauche */
+  border-right: 8px solid transparent;                                          /* Triangle droite */
+  border-bottom: 16px solid #465F9D;                                            /* Triangle bas bleu */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 9. LÉGENDE DYNAMIQUE                                                          ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.ctrl-legende {
+  position: absolute;                                                           /* Position absolue */
+  top: 10px;                                                                    /* 10px du haut */
+  right: 14px;                                                                  /* 14px de droite */
+  z-index: 1250;                                                                /* Au-dessus tout */
+}
+
+.btn-legende {
+  background: #465F9D !important;                                               /* Fond bleu DSFR */
+  color: #ffffff !important;                                                    /* Texte blanc */
+  border: none !important;                                                      /* Pas de bordure */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  padding: 8px 14px;                                                            /* Padding */
+  font-weight: 600;                                                             /* Semi-gras */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);                                     /* Ombre */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  transition: background 0.3s ease;                                             /* Transition */
+}
+
+.btn-legende:hover {
+  background: #f43b3e !important;                                               /* Orange survol */
+}
+
+.panneau-legende {
+  position: absolute;                                                           /* Position absolue */
+  top: 48px;                                                                    /* Sous le bouton */
+  right: 0;                                                                     /* Aligné droite */
+  width: 280px;                                                                 /* Largeur fixe */
+  max-height: 500px;                                                            /* Hauteur max */
+  background: #ffffff;                                                          /* Fond blanc */
+  padding: 16px;                                                                /* Padding */
+  border: 1px solid #ccc;                                                       /* Bordure grise */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);                                    /* Ombre */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  animation: fadeIn 0.3s ease-in-out;                                           /* Animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;                                                                 /* Début transparent */
+    transform: translateY(-10px);                                               /* Décalé haut */
+  }
+  to {
+    opacity: 1;                                                                 /* Fin opaque */
+    transform: translateY(0);                                                   /* Position normale */
+  }
+}
+
+.legende-container {
+  width: 100%;                                                                  /* Pleine largeur */
+}
+
+.legende-titre {
+  margin: 0 0 12px 0;                                                           /* Marges */
+  padding-bottom: 8px;                                                          /* Padding bas */
+  border-bottom: 2px solid black;                                               /* Bordure basse */
+  color: #2c3e50;                                                               /* Bleu-gris */
+  font-size: 1.1em;                                                             /* Taille texte */
+  font-weight: 700;                                                             /* Gras */
+}
+
+.legende-items {
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  gap: 8px;                                                                     /* Espacement */
+}
+
+.legende-item {
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+  gap: 10px;                                                                    /* Espacement */
+  font-size: 0.9em;                                                             /* Taille texte */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+.legende-symbole {
+  display: inline-block;                                                        /* Inline-block */
+  width: 30px;                                                                  /* Largeur */
+  height: 20px;                                                                 /* Hauteur */
+  flex-shrink: 0;                                                               /* Ne rétrécit pas */
+  border-radius: 2px;                                                           /* Coins arrondis */
+}
+
+.legende-vide {
+  text-align: center;                                                           /* Centré */
+  color: #999;                                                                  /* Gris */
+  font-style: italic;                                                           /* Italique */
+  padding: 20px;                                                                /* Padding */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 10. SYSTÈME MAPMENU + DOCK (Navigation Lizmap)                                ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ─── Barre verticale gauche (mapmenu) ─── */
+.mapmenu {
+  position: absolute;                                                           /* Position absolue */
+  left: 0;                                                                      /* Aligné gauche */
+  top: 0;                                                                       /* Aligné haut */
+  width: 50px;                                                                  /* Largeur fixe */
+  height: 100%;                                                                 /* Pleine hauteur */
+  background: #465F9D;                                                          /* Fond bleu DSFR */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  align-items: center;                                                          /* Centre horizontal */
+  padding-top: 10px;                                                            /* Padding haut */
+  z-index: 600;                                                                 /* Au-dessus carte */
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);                                     /* Ombre droite */
+}
+
+/* ─── Bouton hamburger toggle ─── */
+.menu-toggle-btn,
+#menuToggle {
+  width: 36px;                                                                  /* Largeur */
+  height: 36px;                                                                 /* Hauteur */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  justify-content: center;                                                      /* Centre vertical */
+  align-items: center;                                                          /* Centre horizontal */
+  gap: 5px;                                                                     /* Espacement barres */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  padding: 8px;                                                                 /* Padding */
+  margin-bottom: 15px;                                                          /* Marge basse */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  background: transparent;                                                      /* Transparent */
+  border: none;                                                                 /* Pas de bordure */
+  transition: transform 0.3s ease, background 0.2s ease;                        /* Transitions */
+}
+
+.menu-toggle-btn:hover,
+#menuToggle:hover {
+  background: rgba(255, 255, 255, 0.15);                                        /* Fond blanc survol */
+}
+
+/* Barres du hamburger */
+.menu-toggle-btn span,
+#menuToggle span,
+#menuToggle .bar {
+  display: block;                                                               /* Affichage bloc */
+  width: 22px;                                                                  /* Largeur barre */
+  height: 2px;                                                                  /* Hauteur barre */
+  background: white;                                                            /* Blanc */
+  border-radius: 1px;                                                           /* Coins arrondis */
+  transition: background-color 0.3s ease;                                       /* Transition couleur */
+}
+
+/* État actif : rotation 90° */
+.menu-toggle-btn.active,
+.menu-toggle-btn.rotated,
+#menuToggle.active,
+#menuToggle.rotated {
+  transform: rotate(90deg);                                                     /* Rotation 90° */
+}
+
+.menu-toggle-btn.active span,
+.menu-toggle-btn.rotated span,
+#menuToggle.active span,
+#menuToggle.rotated span,
+#menuToggle.active .bar,
+#menuToggle.rotated .bar {
+  background-color: #FFD700;                                                    /* Jaune doré actif */
+}
+
+/* ─── Liste navigation ─── */
+.nav-list {
+  list-style: none;                                                             /* Pas de puces */
+  margin: 0;                                                                    /* Pas de marge */
+  padding: 0;                                                                   /* Pas de padding */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  align-items: center;                                                          /* Centre horizontal */
+  gap: 5px;                                                                     /* Espacement */
+  width: 100%;                                                                  /* Pleine largeur */
+}
+
+.nav-item {
+  width: 100%;                                                                  /* Pleine largeur */
+  display: flex;                                                                /* Disposition flex */
+  justify-content: center;                                                      /* Centre horizontal */
+}
+
+/* ─── Boutons navigation ─── */
+.nav-btn {
+  width: 40px !important;                                                       /* Largeur fixe */
+  height: 40px !important;                                                      /* Hauteur fixe */
+  min-width: 40px !important;                                                   /* Largeur min */
+  padding: 0 !important;                                                        /* Pas de padding */
+  margin: 0 !important;                                                         /* Pas de marge */
+  background: transparent !important;                                           /* Transparent */
+  border: none !important;                                                      /* Pas de bordure */
+  border-radius: 4px !important;                                                /* Coins arrondis */
+  color: white !important;                                                      /* Texte blanc */
+  font-size: 1.15em !important;                                                 /* Taille icône */
+  display: flex !important;                                                     /* Disposition flex */
+  align-items: center !important;                                               /* Centre vertical */
+  justify-content: center !important;                                           /* Centre horizontal */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  transition: all 0.2s ease;                                                    /* Transition */
+  position: relative;                                                           /* Position relative */
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.15) !important;                             /* Fond survol */
+  color: #f43b3e !important;                                                    /* Orange survol */
+}
+
+.nav-btn:focus {
+  outline: none !important;                                                     /* Pas de outline */
+  box-shadow: none !important;                                                  /* Pas d'ombre */
+}
+
+.nav-btn.active,
+.nav-btn.btn-active {
+  background: #c43b3e !important;                                               /* Fond orange actif */
+  color: white !important;                                                      /* Texte blanc */
+}
+
+/* Tooltip au survol */
+.nav-btn::after {
+  content: attr(title);                                                         /* Contenu titre */
+  position: absolute;                                                           /* Position absolue */
+  left: 55px;                                                                   /* Décalage gauche */
+  top: 50%;                                                                     /* Centre vertical */
+  transform: translateY(-50%);                                                  /* Centrage */
+  background: #333;                                                             /* Fond foncé */
+  color: white;                                                                 /* Texte blanc */
+  padding: 6px 10px;                                                            /* Padding */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  font-size: 12px;                                                              /* Petite taille */
+  white-space: nowrap;                                                          /* Pas de retour ligne */
+  opacity: 0;                                                                   /* Invisible */
+  pointer-events: none;                                                         /* Pas d'interaction */
+  transition: opacity 0.2s ease;                                                /* Transition */
+  z-index: 1000;                                                                /* Au-dessus */
+}
+
+.nav-btn:hover::after {
+  opacity: 1;                                                                   /* Visible au survol */
+}
+
+/* ─── Panneau dock ─── */
+.dock {
+  position: absolute;                                                           /* Position absolue */
+  left: 50px;                                                                   /* Après mapmenu */
+  top: 0;                                                                       /* Aligné haut */
+  width: 320px;                                                                 /* Largeur fixe */
+  height: 100%;                                                                 /* Pleine hauteur */
+  background: #f6f6f6;                                                          /* Fond gris clair */
+  color: #333;                                                                  /* Texte foncé */
+  z-index: 500;                                                                 /* Sous mapmenu */
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.25);                                   /* Ombre droite */
+  transform: translateX(-100%);                                                 /* Masqué gauche */
+  opacity: 0;                                                                   /* Invisible */
+  transition: transform 0.3s ease, opacity 0.3s ease;                           /* Transitions */
+  overflow: hidden;                                                             /* Masque débordement */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  pointer-events: none;                                                         /* Pas d'interaction */
+}
+
+.dock.dock-open {
+  transform: translateX(0);                                                     /* Visible */
+  opacity: 1;                                                                   /* Opaque */
+  pointer-events: auto;                                                         /* Interaction active */
+}
+
+/* Bouton fermer dock */
+.dock-close-btn,
+.btn-close-dock,
+[data-action="close-dock"] {
+  position: absolute;                                                           /* Position absolue */
+  top: 10px;                                                                    /* 10px du haut */
+  right: 10px;                                                                  /* 10px de droite */
+  width: 28px;                                                                  /* Largeur */
+  height: 28px;                                                                 /* Hauteur */
+  background: #465F9D;                                                          /* Fond bleu DSFR */
+  border: none;                                                                 /* Pas de bordure */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  color: white;                                                                 /* Texte blanc */
+  font-size: 14px;                                                              /* Taille icône */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+  justify-content: center;                                                      /* Centre horizontal */
+  transition: all 0.2s ease;                                                    /* Transition */
+  z-index: 10;                                                                  /* Au-dessus contenu */
+}
+
+.dock-close-btn:hover,
+.btn-close-dock:hover,
+[data-action="close-dock"]:hover {
+  background: #f43b3e;                                                          /* Orange survol */
+}
+
+/* Croix pseudo-éléments */
+.dock-close-btn.use-pseudo::before,
+.dock-close-btn.use-pseudo::after {
+  content: '';                                                                  /* Contenu vide */
+  position: absolute;                                                           /* Position absolue */
+  width: 14px;                                                                  /* Largeur barre */
+  height: 2px;                                                                  /* Hauteur barre */
+  background-color: white;                                                      /* Blanc */
+  border-radius: 1px;                                                           /* Coins arrondis */
+}
+
+.dock-close-btn.use-pseudo::before {
+  transform: rotate(45deg);                                                     /* Rotation 45° */
+}
+
+.dock-close-btn.use-pseudo::after {
+  transform: rotate(-45deg);                                                    /* Rotation -45° */
+}
+
+/* ─── Panneaux dock ─── */
+.dock-panel {
+  display: none;                                                                /* Masqué par défaut */
+  flex-direction: column;                                                       /* Vertical */
+  height: 100%;                                                                 /* Pleine hauteur */
+  overflow: hidden;                                                             /* Masque débordement */
+}
+
+.dock-panel.panel-active {
+  display: flex;                                                                /* Visible si actif */
+}
+
+.panel-title {
+  color: white !important;                                                      /* Texte blanc */
+  background: linear-gradient(120deg,                                           /* Dégradé bleu */
+                              rgba(70, 95, 157, 0.75),
+                              rgba(70, 95, 157, 0.85),
+                              rgba(70, 95, 157, 1));
+  font-size: 1.1em;                                                             /* Taille texte */
+  font-weight: 600;                                                             /* Semi-gras */
+  margin: 0;                                                                    /* Pas de marge */
+  padding: 15px 20px;                                                           /* Padding */
+  padding-right: 45px;                                                          /* Espace bouton fermer */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);                                  /* Bordure basse */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+  gap: 10px;                                                                    /* Espacement icône */
+  flex-shrink: 0;                                                               /* Ne rétrécit pas */
+}
+
+.panel-title i {
+  font-size: 1em;                                                               /* Taille icône */
+}
+
+.panel-content {
+  flex: 1;                                                                      /* Occupe espace */
+  overflow-y: auto;                                                             /* Scroll vertical */
+  padding: 15px 20px;                                                           /* Padding */
+  background-color: cornsilk;                                                   /* Fond jaune pâle */
+}
+
+/* ─── Formulaires dans dock ─── */
+.dock .form-group label,
+.dock label {
+  color: #333;                                                                  /* Texte foncé */
+  font-weight: 500;                                                             /* Medium */
+  margin-bottom: 6px;                                                           /* Marge basse */
+}
+
+.dock .form-control {
+  background: white;                                                            /* Fond blanc */
+  border: 1px solid #ccc;                                                       /* Bordure grise */
+  color: #333;                                                                  /* Texte foncé */
+  border-radius: 4px;                                                           /* Coins arrondis */
+}
+
+.dock .form-control:focus {
+  border-color: #c43b3e !important;                                             /* Bordure orange focus */
+  box-shadow: 0 0 0 2px rgba(196, 59, 62, 0.2);                                 /* Ombre focus */
+}
+
+.dock .btn-primary {
+  background: #465F9D !important;                                               /* Fond bleu DSFR */
+  border-color: #465F9D !important;                                             /* Bordure bleue */
+  color: white !important;                                                      /* Texte blanc */
+}
+
+.dock .btn-primary:hover {
+  background: #f43b3e !important;                                               /* Orange survol */
+  border-color: #f43b3e !important;                                             /* Bordure orange */
+}
+
+.dock .btn-secondary {
+  background: #e0e0e0 !important;                                               /* Fond gris clair */
+  border: 1px solid #ccc !important;                                            /* Bordure grise */
+  color: #333 !important;                                                       /* Texte foncé */
+}
+
+.dock .btn-secondary:hover {
+  background: #d0d0d0 !important;                                               /* Gris foncé survol */
+}
+
+.dock .btn-block {
+  display: block;                                                               /* Affichage bloc */
+  width: 100%;                                                                  /* Pleine largeur */
+}
+
+.btn-group-actions {
+  display: flex;                                                                /* Disposition flex */
+  gap: 8px;                                                                     /* Espacement */
+  margin-top: 8px;                                                              /* Marge haute */
+}
+
+.btn-group-actions .btn {
+  flex: 1;                                                                      /* Flex égal */
+}
+
+.btn-group-actions .btn-secondary {
+  flex: 0 0 auto;                                                               /* Pas de flex */
+  width: 40px;                                                                  /* Largeur fixe */
+}
+
+.dock .checkbox label,
+.dock .shiny-input-checkboxgroup label {
+  color: #333;                                                                  /* Texte foncé */
+  font-weight: 400;                                                             /* Normal */
+  cursor: pointer;                                                              /* Curseur pointeur */
+}
+
+.dock .checkbox input[type="checkbox"],
+.dock .shiny-input-checkboxgroup input[type="checkbox"] {
+  margin-right: 8px;                                                            /* Marge droite */
+}
+
+/* ─── Panneau outils ─── */
+.outils-instructions {
+  background: #e8e8e8;                                                          /* Fond gris */
+  padding: 10px 12px;                                                           /* Padding */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  margin-bottom: 15px;                                                          /* Marge basse */
+  font-size: 0.9em;                                                             /* Taille texte */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+.outils-instructions i {
+  color: #c43b3e !important;                                                    /* Icône orange */
+  margin-right: 5px;                                                            /* Marge droite */
+}
+
+.outils-legende {
+  font-size: 0.85em;                                                            /* Petite taille */
+  line-height: 1.6;                                                             /* Interligne */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+.outils-legende p {
+  margin: 5px 0;                                                                /* Marges verticales */
+}
+
+.outils-legende strong {
+  color: #c43b3e !important;                                                    /* Orange */
+}
+
+.mesure-resultat-box {
+  background: #e8e8e8;                                                          /* Fond gris */
+  border: 1px solid #ccc;                                                       /* Bordure grise */
+  border-radius: 6px;                                                           /* Coins arrondis */
+  padding: 12px;                                                                /* Padding */
+  margin-top: 10px;                                                             /* Marge haute */
+}
+
+.mesure-resultat-box h5 {
+  color: #c43b3e !important;                                                    /* Titre orange */
+  margin: 0 0 10px 0;                                                           /* Marges */
+  font-size: 0.95em;                                                            /* Taille texte */
+  font-weight: 600;                                                             /* Semi-gras */
+}
+
+.mesure-valeur {
+  font-size: 1.1em;                                                             /* Taille texte */
+  font-weight: 500;                                                             /* Medium */
+  color: #333;                                                                  /* Texte foncé */
+  text-align: center;                                                           /* Centré */
+  padding: 8px;                                                                 /* Padding */
+  background: white;                                                            /* Fond blanc */
+  border-radius: 4px;                                                           /* Coins arrondis */
+}
+
+/* ─── Description export ─── */
+.export-description {
+  background: #e8e8e8;                                                          /* Fond gris */
+  border: 1px solid #ccc;                                                       /* Bordure grise */
+  border-radius: 6px;                                                           /* Coins arrondis */
+  padding: 12px;                                                                /* Padding */
+  margin-bottom: 15px;                                                          /* Marge basse */
+  font-size: 0.9em;                                                             /* Taille texte */
+}
+
+.export-description p {
+  margin: 0 0 8px 0;                                                            /* Marges */
+  color: #c43b3e !important;                                                    /* Texte orange */
+  font-weight: 600;                                                             /* Semi-gras */
+}
+
+.export-description ul {
+  margin: 0;                                                                    /* Pas de marge */
+  padding-left: 20px;                                                           /* Retrait */
+  list-style-type: disc;                                                        /* Puces disque */
+}
+
+.export-description li {
+  margin: 4px 0;                                                                /* Marges verticales */
+  color: #333;                                                                  /* Texte foncé */
+}
+
+.export-description li strong {
+  color: #c43b3e !important;                                                    /* Orange */
+}
+
+/* Décalage carte quand dock ouvert */
+body.dock-is-open .conteneur-carte {
+  margin-left: 370px;                                                           /* Décalage gauche */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 11. OUTIL DE MESURE                                                           ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.ctrl-mesure-distance {
+  position: absolute;                                                           /* Position absolue */
+  top: 155px;                                                                   /* Sous zoom */
+  left: 14px;                                                                   /* Aligné gauche */
+  z-index: 1000;                                                                /* Au-dessus carte */
+  display: flex;                                                                /* Disposition flex */
+  flex-direction: column;                                                       /* Vertical */
+  gap: 2px;                                                                     /* Espacement */
+}
+
+.btn-mesure,
+.btn-mesure-clear {
+  width: 30px;                                                                  /* Largeur */
+  height: 30px;                                                                 /* Hauteur */
+  background-color: #465F9D !important;                                         /* Fond bleu DSFR */
+  color: #ffffff !important;                                                    /* Texte blanc */
+  border: 2px solid rgba(0, 0, 0, 0.2) !important;                              /* Bordure sombre */
+  border-radius: 4px;                                                           /* Coins arrondis */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  display: flex;                                                                /* Disposition flex */
+  align-items: center;                                                          /* Centre vertical */
+  justify-content: center;                                                      /* Centre horizontal */
+  font-size: 14px;                                                              /* Taille icône */
+  transition: all 0.2s ease;                                                    /* Transition */
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);                                     /* Ombre */
+}
+
+.btn-mesure:hover,
+.btn-mesure-clear:hover {
+  background-color: #f43b3e !important;                                         /* Orange survol */
+  transform: scale(1.05);                                                       /* Légère échelle */
+}
+
+.btn-mesure.active {
+  background-color: #c43b3e !important;                                         /* Orange actif */
+  border-color: #c43b3e !important;                                             /* Bordure orange */
+  box-shadow: 0 0 10px #c43b3e;                                                 /* Halo orange */
+}
+
+.btn-mesure.active:hover {
+  background-color: #f43b3e !important;                                         /* Orange clair survol */
+}
+
+/* Tooltip mesure */
+.measure-tooltip-container {
+  background: #465F9D !important;                                               /* Fond bleu DSFR */
+  border: none !important;                                                      /* Pas de bordure */
+  border-radius: 6px !important;                                                /* Coins arrondis */
+  padding: 0 !important;                                                        /* Pas de padding */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35) !important;                        /* Ombre */
+}
+
+.measure-tooltip-container::before {
+  border-top-color: #465F9D !important;                                         /* Flèche bleue */
+}
+
+.measure-tooltip-total {
+  color: #ffffff;                                                               /* Texte blanc */
+  font-size: 13px;                                                              /* Taille texte */
+  font-weight: 600;                                                             /* Semi-gras */
+  padding: 8px 14px;                                                            /* Padding */
+  white-space: nowrap;                                                          /* Pas de retour ligne */
+}
+
+.measure-tooltip-total strong {
+  color: #FFD700;                                                               /* Jaune doré */
+  font-weight: 700;                                                             /* Gras */
+}
+
+/* Labels segments */
+.measure-segment-label {
+  background: rgba(255, 255, 255, 0.95) !important;                             /* Fond blanc */
+  border: 1px solid #c43b3e !important;                                         /* Bordure orange */
+  border-radius: 4px !important;                                                /* Coins arrondis */
+  padding: 2px 6px !important;                                                  /* Padding */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;                          /* Ombre */
+  font-size: 11px !important;                                                   /* Petite taille */
+  color: #333 !important;                                                       /* Texte foncé */
+}
+
+.measure-segment-label::before {
+  display: none !important;                                                     /* Masque flèche */
+}
+
+.segment-dist {
+  font-weight: 600;                                                             /* Semi-gras */
+  color: #f43b3e !important;                                                    /* Orange */
+}
+
+/* Curseur crosshair en mode mesure */
+body.measure-mode-active .leaflet-container,
+body.measure-mode-active .leaflet-container *,
+body.measure-mode-active .leaflet-tile-pane,
+body.measure-mode-active .leaflet-overlay-pane,
+body.measure-mode-active .leaflet-overlay-pane *,
+body.measure-mode-active .leaflet-map-pane,
+body.measure-mode-active .leaflet-map-pane *,
+body.measure-mode-active .leaflet-interactive,
+body.measure-mode-active .old50m-polygon,
+body.measure-mode-active path,
+body.measure-mode-active svg {
+  cursor: crosshair !important;                                                 /* Curseur croix */
+}
+
+/* Protège outil mesure */
+.leaflet-measure-layer,
+.leaflet-measure-resultpopup,
+.leaflet-measure-tooltip {
+  pointer-events: auto !important;                                              /* Interaction */
+  opacity: 1 !important;                                                        /* Visible */
+  visibility: visible !important;                                               /* Visible */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 12. OVERLAY AIDE CARTE                                                        ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.aide-carte-overlay {
+  position: absolute;                                                           /* Position absolue */
+  top: 0;                                                                       /* Aligné haut */
+  left: 0;                                                                      /* Aligné gauche */
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  z-index: 9998;                                                                /* Sous contrôles */
+  pointer-events: none;                                                         /* Pas d'interaction */
+  opacity: 0;                                                                   /* Invisible */
+  transition: opacity 0.3s ease-in-out;                                         /* Transition */
+}
+
+.aide-carte-overlay:not(.hidden) {
+  opacity: 1;                                                                   /* Visible */
+  pointer-events: auto;                                                         /* Interaction */
+}
+
+.aide-backdrop {
+  position: absolute;                                                           /* Position absolue */
+  top: 0;                                                                       /* Aligné haut */
+  left: 0;                                                                      /* Aligné gauche */
+  width: 100%;                                                                  /* Pleine largeur */
+  height: 100%;                                                                 /* Pleine hauteur */
+  background: rgba(255, 255, 255, 0.50);                                        /* Blanc 50% */
+  z-index: -1;                                                                  /* Derrière bulles */
+}
+
+/* ─── Bulles d'aide ─── */
+.help-bubble {
+  position: absolute;                                                           /* Position absolue */
+  background: #ffffff;                                                          /* Fond blanc */
+  border: 2px solid #465F9D;                                                    /* Bordure bleue */
+  border-radius: 8px;                                                           /* Coins arrondis */
+  padding: 12px 16px;                                                           /* Padding */
+  max-width: 250px;                                                             /* Largeur max */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);                                   /* Ombre */
+  font-size: 14px;                                                              /* Taille texte */
+  line-height: 1.4;                                                             /* Interligne */
+  color: #2c3e50;                                                               /* Texte foncé */
+  z-index: 9999;                                                                /* Au-dessus tout */
+  animation: fadeInBounce 0.5s ease-out;                                        /* Animation */
+}
+
+.help-content {
+  position: relative;                                                           /* Position relative */
+  z-index: 2;                                                                   /* Au-dessus flèche */
+}
+
+.help-strong {
+  font-weight: 700;                                                             /* Gras */
+  color: #465F9D;                                                               /* Bleu DSFR */
+  display: inline-block;                                                        /* Inline-block */
+  margin-bottom: 4px;                                                           /* Marge basse */
+}
+
+/* Flèches SVG */
+.help-arrow {
+  position: absolute;                                                           /* Position absolue */
+  width: 60px;                                                                  /* Largeur */
+  height: 60px;                                                                 /* Hauteur */
+  z-index: 1;                                                                   /* Sous bulle */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));                            /* Ombre */
+}
+
+/* Positionnement bulles */
+.help-bubble-zoom {
+  top: 100px;                                                                   /* Position haute */
+  left: 90px;                                                                   /* Position gauche */
+}
+
+.arrow-to-zoom {
+  top: 15px;                                                                    /* Alignement */
+  left: -50px;                                                                  /* À gauche */
+  transform: rotate(-90deg);                                                    /* Rotation */
+}
+
+.help-bubble-legende {
+  top: 50px;                                                                    /* Position haute */
+  right: 150px;                                                                 /* Position droite */
+}
+
+.arrow-to-legende {
+  top: 15px;                                                                    /* Alignement */
+  right: -50px;                                                                 /* À droite */
+  transform: rotate(90deg);                                                     /* Rotation */
+}
+
+.help-bubble-echelles {
+  bottom: 75px;                                                                 /* Position basse */
+  right: 150px;                                                                 /* Position droite */
+}
+
+.arrow-to-echelles {
+  bottom: 15px;                                                                 /* Alignement */
+  right: -50px;                                                                 /* À droite */
+  transform: rotate(90deg);                                                     /* Rotation */
+}
+
+.help-bubble-fonds {
+  bottom: 75px;                                                                 /* Position basse */
+  left: 90px;                                                                   /* Position gauche */
+}
+
+.arrow-to-fonds {
+  bottom: 10px;                                                                 /* Alignement */
+  left: -50px;                                                                  /* À gauche */
+  transform: rotate(-90deg);                                                    /* Rotation */
+}
+
+/* Lien central */
+.help-center-link {
+  position: absolute;                                                           /* Position absolue */
+  top: 50%;                                                                     /* Centre vertical */
+  left: 50%;                                                                    /* Centre horizontal */
+  transform: translate(-50%, -50%);                                             /* Centrage parfait */
+  text-align: center;                                                           /* Texte centré */
+  z-index: 10000;                                                               /* Au-dessus tout */
+}
+
+.btn-aide-complete {
+  display: inline-block;                                                        /* Inline-block */
+  padding: 14px 28px;                                                           /* Padding */
+  background: #465F9D;                                                          /* Fond bleu DSFR */
+  color: #ffffff;                                                               /* Texte blanc */
+  border: none;                                                                 /* Pas de bordure */
+  border-radius: 6px;                                                           /* Coins arrondis */
+  font-size: 16px;                                                              /* Taille texte */
+  font-weight: 600;                                                             /* Semi-gras */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  text-decoration: none;                                                        /* Pas soulignement */
+  box-shadow: 0 4px 12px rgba(70, 95, 157, 0.3);                                /* Ombre */
+  transition: all 0.3s ease;                                                    /* Transition */
+}
+
+.btn-aide-complete:hover {
+  background: #3a4f7f;                                                          /* Bleu foncé survol */
+  transform: translateY(-2px);                                                  /* Élévation */
+  box-shadow: 0 6px 16px rgba(70, 95, 157, 0.4);                                /* Ombre plus forte */
+  text-decoration: none;                                                        /* Pas soulignement */
+}
+
+.btn-aide-complete i {
+  margin-right: 8px;                                                            /* Marge droite icône */
+}
+
+.help-center-subtitle {
+  margin-top: 12px;                                                             /* Marge haute */
+  font-size: 13px;                                                              /* Taille texte */
+  color: #666666;                                                               /* Gris */
+  font-style: italic;                                                           /* Italique */
+}
+
+/* Bouton fermer aide */
+.btn-fermer-aide {
+  position: absolute;                                                           /* Position absolue */
+  top: 60%;                                                                     /* Position verticale */
+  left: 45%;                                                                    /* Position horizontale */
+  padding: 10px 20px;                                                           /* Padding */
+  background: #c43b3e !important;                                               /* Fond orange */
+  color: #ffffff;                                                               /* Texte blanc */
+  border: none;                                                                 /* Pas de bordure */
+  border-radius: 6px;                                                           /* Coins arrondis */
+  font-size: 14px;                                                              /* Taille texte */
+  font-weight: 600;                                                             /* Semi-gras */
+  cursor: pointer;                                                              /* Curseur pointeur */
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);                                 /* Ombre */
+  transition: all 0.3s ease;                                                    /* Transition */
+  z-index: 10001;                                                               /* Au-dessus tout */
+}
+
+.btn-fermer-aide:hover {
+  background: #f43b3e;                                                          /* Orange clair survol */
+  transform: translateY(-1px);                                                  /* Élévation */
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);                                /* Ombre plus forte */
+}
+
+.btn-fermer-aide i {
+  margin-right: 6px;                                                            /* Marge droite icône */
+}
+
+/* Animation apparition */
+@keyframes fadeInBounce {
+  0% {
+    opacity: 0;                                                                 /* Invisible */
+    transform: scale(0.8) translateY(-10px);                                    /* Petite, décalée */
+  }
+  60% {
+    transform: scale(1.05) translateY(0);                                       /* Légèrement grande */
+  }
+  100% {
+    opacity: 1;                                                                 /* Visible */
+    transform: scale(1) translateY(0);                                          /* Taille normale */
+  }
+}
+
+.hidden {
+  display: none !important;                                                     /* Masqué */
+}
+
+/* Effet survol OLD50m */
+.old50m-polygon {
+  cursor: pointer;                                                              /* Curseur pointeur */
+  transition: filter 0.15s ease-in-out;                                         /* Transition */
+}
+
+.leaflet-interactive.old50m-polygon:hover {
+  filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));             /* Luminosité + ombre */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 13. PIED DE PAGE                                                              ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+.pd-page {
+  width: 100%;                                                                  /* Pleine largeur */
+  padding: 15px 20px;                                                           /* Padding */
+  background-color: #465F9D;                                                    /* Fond bleu DSFR */
+  color: #ffffff;                                                               /* Texte blanc */
+  text-align: center;                                                           /* Centré */
+  font-size: 0.9em;                                                             /* Taille texte */
+  border-top: 2px solid #465F9D;                                                /* Bordure haute */
+}
+
+.pd-page a {
+  color: #c43b3e;                                                               /* Liens orange */
+  text-decoration: none;                                                        /* Pas soulignement */
+  transition: color 0.3s ease;                                                  /* Transition */
+}
+
+.pd-page a:hover {
+  color: #ffffff;                                                               /* Blanc survol */
+  text-decoration: underline;                                                   /* Soulignement */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 14. RESPONSIVE DESIGN                                                         ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+/* ─── Grands écrans (>= 1600px) ─── */
+@media (min-width: 1600px) {
+  .sidebar-carte {
+    width: 340px;                                                               /* Plus large */
+    min-width: 340px;                                                           /* Largeur min */
+    font-size: 1.05em;                                                          /* Texte plus grand */
+  }
+
+  .navbar-brand {
+    font-size: 2em !important;                                                  /* Titre plus grand */
+  }
+
+  #b-nav > li > a {
+    font-size: 1.2em !important;                                                /* Tabs plus grandes */
+  }
+}
+
+/* ─── Écrans moyens (1200px - 1599px) ─── */
+@media (max-width: 1599px) and (min-width: 1200px) {
+  .sidebar-carte {
+    width: 300px;                                                               /* Largeur standard */
+    min-width: 300px;                                                           /* Largeur min */
+  }
+}
+
+/* ─── Petits laptops (1000px - 1199px) ─── */
+@media (max-width: 1199px) and (min-width: 1000px) {
+  .sidebar-carte {
+    width: 280px;                                                               /* Plus étroit */
+    min-width: 280px;                                                           /* Largeur min */
+    font-size: 0.95em;                                                          /* Texte plus petit */
+  }
+
+  .navbar-brand {
+    font-size: 1.6em !important;                                                /* Titre plus petit */
+  }
+
+  #b-nav > li > a {
+    font-size: 1em !important;                                                  /* Tabs plus petites */
+    padding: 10px 15px !important;                                              /* Padding réduit */
+  }
+}
+
+/* ─── Tablettes (768px - 999px) ─── */
+@media (max-width: 999px) {
+  /* Correction scroll */
+  html, body {
+    height: auto !important;                                                    /* Hauteur auto */
+    min-height: 100vh;                                                          /* Hauteur min viewport */
+    overflow-x: hidden !important;                                              /* Pas scroll horizontal */
+    overflow-y: auto !important;                                                /* Scroll vertical */
+    -webkit-overflow-scrolling: touch;                                          /* Scroll iOS */
+  }
+
+  .tab-content {
+    height: auto !important;                                                    /* Hauteur auto */
+    min-height: calc(100vh - 60px) !important;                                  /* Hauteur min */
+    overflow-y: visible !important;                                             /* Visible */
+    overflow-x: hidden !important;                                              /* Pas horizontal */
+  }
+
+  #content-app {
+    flex-direction: column;                                                     /* Vertical */
+    height: auto !important;                                                    /* Hauteur auto */
+    min-height: calc(100vh - 60px);                                             /* Hauteur min */
+    overflow: visible !important;                                               /* Visible */
+  }
+
+  .sidebar-carte {
+    width: 100%;                                                                /* Pleine largeur */
+    min-width: 100%;                                                            /* Largeur min */
+    height: auto;                                                               /* Hauteur auto */
+    border-right: none;                                                         /* Pas bordure droite */
+    border-bottom: 3px solid #012f35;                                           /* Bordure basse */
+    max-height: none;                                                           /* Pas limite hauteur */
+    overflow-y: visible;                                                        /* Visible */
+  }
+
+  .conteneur-carte {
+    height: 60vh !important;                                                    /* 60% viewport */
+    min-height: 400px;                                                          /* Hauteur min */
+    margin-left: 0 !important;                                                  /* Pas de marge */
+  }
+
+  .mapmenu {
+    width: 40px;                                                                /* Plus étroit */
+  }
+
+  .dock {
+    left: 40px;                                                                 /* Décalage */
+    width: 280px;                                                               /* Plus étroit */
+  }
+
+  body.dock-is-open .conteneur-carte {
+    margin-left: 0 !important;                                                  /* Pas de décalage */
+  }
+
+  .navbar-brand {
+    font-size: 1.4em !important;                                                /* Plus petit */
+    padding: 0 10px !important;                                                 /* Padding réduit */
+  }
+
+  #b-nav {
+    padding-left: 10px !important;                                              /* Padding réduit */
+  }
+
+  #b-nav > li > a {
+    font-size: 0.95em !important;                                               /* Plus petit */
+    padding: 8px 12px !important;                                               /* Padding réduit */
+  }
+
+  .help-bubble {
+    max-width: 200px;                                                           /* Plus étroit */
+    font-size: 12px;                                                            /* Plus petit */
+    padding: 10px 12px;                                                         /* Padding réduit */
+  }
+
+  .help-arrow {
+    width: 45px;                                                                /* Plus petit */
+    height: 45px;                                                               /* Plus petit */
+  }
+
+  .btn-aide-complete {
+    padding: 12px 20px;                                                         /* Padding réduit */
+    font-size: 14px;                                                            /* Plus petit */
+  }
+
+  .help-center-subtitle {
+    font-size: 11px;                                                            /* Plus petit */
+  }
+
+  .bloc-accueil-cadre,
+  .bloc-aide-cadre,
+  .bloc-avertissement-cadre {
+    width: 95% !important;                                                      /* Presque pleine largeur */
+    margin: 2% 2.5% !important;                                                 /* Marges réduites */
+    min-height: auto !important;                                                /* Hauteur auto */
+    height: auto !important;                                                    /* Hauteur auto */
+    padding-bottom: 80px !important;                                            /* Espace liens bas */
+    margin-bottom: 30px !important;                                             /* Marge basse */
+  }
+
+  .text-accueil-cadre,
+  .text-aide-cadre {
+    padding: 30px 20px 100px 20px !important;                                   /* Padding ajusté */
+    min-height: auto !important;                                                /* Hauteur auto */
+  }
+
+  .text-avertissement-cadre {
+    padding-bottom: 80px !important;                                            /* Espace bas */
+  }
+
+  .pd-page {
+    position: relative !important;                                              /* Position relative */
+    bottom: auto !important;                                                    /* Pas de position fixe */
+    margin-top: 20px;                                                           /* Marge haute */
+  }
+}
+
+/* ─── Mobiles (< 768px) ─── */
+@media (max-width: 768px) {
+  html, body {
+    height: auto !important;                                                    /* Hauteur auto */
+    min-height: 100vh;                                                          /* Hauteur min */
+    overflow-x: hidden !important;                                              /* Pas horizontal */
+    overflow-y: auto !important;                                                /* Scroll vertical */
+    -webkit-overflow-scrolling: touch;                                          /* Scroll iOS */
+  }
+
+  .tab-content {
+    height: auto !important;                                                    /* Hauteur auto */
+    min-height: calc(100vh - 60px) !important;                                  /* Hauteur min */
+    overflow-y: visible !important;                                             /* Visible */
+    overflow-x: hidden !important;                                              /* Pas horizontal */
+  }
+
+  .navbar-brand {
+    font-size: 1.2em !important;                                                /* Plus petit */
+    padding: 0 8px !important;                                                  /* Padding minimal */
+  }
+
+  #b-nav > li > a {
+    font-size: 0.85em !important;                                               /* Plus petit */
+    padding: 6px 10px !important;                                               /* Padding minimal */
+  }
+
+  .sidebar-carte {
+    padding: 10px;                                                              /* Padding réduit */
+    font-size: 0.9em;                                                           /* Texte plus petit */
+  }
+
+  .conteneur-carte {
+    height: 50vh !important;                                                    /* 50% viewport */
+    min-height: 350px;                                                          /* Hauteur min */
+    margin-left: 0 !important;                                                  /* Pas de marge */
+  }
+
+  .mapmenu {
+    width: 36px;                                                                /* Plus étroit */
+    padding-top: 5px;                                                           /* Padding haut */
+  }
+
+  .dock {
+    left: 36px;                                                                 /* Décalage */
+    width: calc(100vw - 50px);                                                  /* Largeur adaptative */
+    max-width: 300px;                                                           /* Largeur max */
+  }
+
+  .ctrl-echelle-num,
+  .ctrl-echelle-graph {
+    font-size: 0.7em;                                                           /* Plus petit */
+  }
+
+  .indicateur-nord {
+    width: 30px;                                                                /* Plus petit */
+    height: 40px;                                                               /* Plus petit */
+  }
+
+  .panneau-legende {
+    width: 240px;                                                               /* Plus étroit */
+  }
+
+  .help-bubble {
+    max-width: 160px;                                                           /* Plus étroit */
+    font-size: 11px;                                                            /* Plus petit */
+    padding: 8px 10px;                                                          /* Padding minimal */
+  }
+
+  .help-arrow {
+    width: 35px;                                                                /* Plus petit */
+    height: 35px;                                                               /* Plus petit */
+  }
+
+  .btn-aide-complete {
+    padding: 10px 16px;                                                         /* Padding compact */
+    font-size: 13px;                                                            /* Plus petit */
+  }
+
+  .btn-fermer-aide {
+    z-index: 10000;                                                             /* Au-dessus */
+    position: absolute;                                                         /* Position absolue */
+    top: 60%;                                                                   /* Position verticale */
+    left: 40%;                                                                  /* Position horizontale */
+    right: 40%;                                                                 /* Centrage */
+    padding: 10px 20px;                                                         /* Padding */
+    font-size: 14px;                                                            /* Taille texte */
+    text-align: center;                                                         /* Centré */
+  }
+
+  .help-center-subtitle {
+    font-size: 10px;                                                            /* Minimal */
+  }
+
+  .help-bubble-zoom {
+    left: 10px;                                                                 /* Près du bord */
+  }
+
+  .help-bubble-legende {
+    top: 50px;                                                                  /* Position */
+    right: 125px;                                                               /* Position */
+  }
+
+  .help-bubble-echelles {
+    bottom: 100px;                                                              /* Plus d'espace */
+    right: 10px;                                                                /* Près du bord */
+  }
+
+  .help-bubble-fonds {
+    bottom: 60px;                                                               /* Plus d'espace */
+    left: 10px;                                                                 /* Près du bord */
+  }
+
+  .bloc-accueil-cadre,
+  .bloc-aide-cadre,
+  .bloc-avertissement-cadre {
+    width: 98% !important;                                                      /* Presque pleine */
+    margin: 1% !important;                                                      /* Marges minimales */
+    padding-bottom: 100px !important;                                           /* Espace bas */
+    margin-bottom: 40px !important;                                             /* Marge basse */
+  }
+
+  .text-accueil-cadre,
+  .text-aide-cadre {
+    padding: 20px 15px 120px 15px !important;                                   /* Padding ajusté */
+  }
+}
+
+/* ─── Très petits mobiles (< 480px) ─── */
+@media (max-width: 480px) {
+  .navbar-brand {
+    font-size: 1em !important;                                                  /* Minimal */
+  }
+
+  #b-nav > li > a {
+    font-size: 0.75em !important;                                               /* Minimal */
+    padding: 4px 8px !important;                                                /* Padding minimal */
+  }
+
+  .ctrl-echelle-num,
+  .ctrl-echelle-graph,
+  .indicateur-nord {
+    transform: scale(0.85);                                                     /* Réduction 85% */
+  }
+
+  .panneau-legende {
+    width: calc(100vw - 30px);                                                  /* Presque pleine */
+    right: 10px;                                                                /* Marge droite */
+  }
+
+  .help-bubble {
+    display: none;                                                              /* Masquer bulles */
+  }
+
+  .help-center-link {
+    top: 40%;                                                                   /* Décalé haut */
+  }
+
+  .btn-aide-complete {
+    font-size: 12px;                                                            /* Plus petit */
+    padding: 8px 14px;                                                          /* Padding compact */
+  }
+
+  .help-center-subtitle {
+    display: none;                                                              /* Masqué */
+  }
+
+  .conteneur-carte {
+    height: 45vh !important;                                                    /* 45% viewport */
+    min-height: 300px;                                                          /* Hauteur min */
+  }
+
+  .mapmenu {
+    width: 32px;                                                                /* Minimal */
+  }
+
+  .dock {
+    left: 32px;                                                                 /* Décalage */
+    width: calc(100vw - 40px);                                                  /* Largeur adaptative */
+  }
+
+  .bloc-accueil-cadre,
+  .bloc-aide-cadre,
+  .bloc-avertissement-cadre {
+    padding-bottom: 120px !important;                                           /* Plus d'espace */
+  }
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 15. MODE EXPORT                                                               ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+body.export-mode .leaflet-control-container,
+body.export-mode .leaflet-control-attribution,
+body.export-mode .leaflet-control-zoom,
+body.export-mode .leaflet-top,
+body.export-mode .leaflet-bottom,
+body.export-mode .ctrl-mesure-distance,
+body.export-mode .ctrl-legende,
+body.export-mode .ctrl-echelle-num,
+body.export-mode .ctrl-echelle-graph,
+body.export-mode .indicateur-nord,
+body.export-mode .mapmenu,
+body.export-mode .dock {
+  display: none !important;                                                     /* Masque contrôles */
+  visibility: hidden !important;                                                /* Invisible */
+}
+
+/* Couches SVG visibles pendant export */
+body.export-mode .leaflet-overlay-pane,
+body.export-mode .leaflet-overlay-pane svg,
+body.export-mode .leaflet-overlay-pane path {
+  display: block !important;                                                    /* Visible */
+  visibility: visible !important;                                               /* Visible */
+  opacity: 1 !important;                                                        /* Opaque */
+}
+
+/* ╔═══════════════════════════════════════════════════════════════════════════════╗
+   ║ 16. ACCESSIBILITÉ                                                             ║
+   ╚═══════════════════════════════════════════════════════════════════════════════╝ */
+
+:focus-visible {
+  outline: 2px solid #000091;                                                   /* Contour bleu France */
+  outline-offset: 2px;                                                          /* Décalage contour */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;                                      /* Désactive animations */
+    animation-iteration-count: 1 !important;                                    /* Une seule fois */
+    transition-duration: 0.01ms !important;                                     /* Désactive transitions */
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════════
+   FIN DU FICHIER style.css
+   ═══════════════════════════════════════════════════════════════════════════════ */

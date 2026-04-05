@@ -1,0 +1,43 @@
+---
+output:
+  html_document:
+    self_contained: true
+    theme: null 
+    mathjax: null
+    toc: false
+    css: ../../inst/app/www/css/style.css
+---
+
+<div class="text-accueil-cadre">
+
+# BIENVENUE sur cartOLD
+
+## CARTOGRAPHIE INDICATIVE DES OBLIGATIONS LÉGALES DE DÉBROUSSAILLEMENT
+
+<div class="bloc-texte-accueil-cadre">
+
+### Qu'est-ce-que les OLD ?
+
+Les obligations légales de débroussaillement (OLD) concernent les terrains situés en zone exposée au risque d’incendie. Elles consistent à réduire et maîtriser la végétation autour des constructions afin de limiter la propagation du feu, protéger les habitants, sécuriser les biens et préserver les espaces naturels.
+
+Encadrées par le code forestier et précisées par arrêtés préfectoraux, ces obligations constituent un devoir de prévention dont le respect est essentiel pour la sécurité collective.
+
+### Présentation de l’outil
+
+L’outil CartOLD permet de visualiser l’étendue des terrains à débroussailler par chaque propriétaire de bâtiment sur 238 communes du département de la Drôme.
+
+Cette cartographie reste indicative et donne un aperçu le plus réaliste possible des périmètres à débroussailler.
+
+### La DDT de la Drôme
+
+La direction départementale des territoires (DDT) de la Drôme est le service de l’État chargé de mettre en œuvre, sous l’autorité de la préfète, les politiques publiques liées à l’aménagement du territoire, à l’agriculture, à l’environnement, au logement et à la prévention des risques. Elle accompagne les collectivités, les acteurs économiques et les citoyens pour un développement équilibré et durable du département.
+
+Au sein de la DDT et du service Eaux Forêts Espaces Naturels, le pôle Forêt pilote les actions relatives à la gestion durable des forêts, à la prévention des incendies et à la valorisation de la filière forestière.
+
+### En savoir plus…
+
+- [Obligations de débroussaillement – Préfecture de la Drôme](https://www.drome.gouv.fr/Actions-de-l-Etat/Agriculture.-forets-et-developpement-rural/Forets/Prevention-contre-les-incendies-de-forets/Obligations-de-debroussaillement){target="_blank" rel="noopener"}
+- [Guide du débroussaillement réglementaire – Préfecture de la Drôme](https://www.drome.gouv.fr/Actions-de-l-Etat/Agriculture.-forets-et-developpement-rural/Forets/Prevention-contre-les-incendies-de-forets/Guide-du-debroussaillement-reglementaire){target="_blank" rel="noopener"}
+
+</div>
+</div>

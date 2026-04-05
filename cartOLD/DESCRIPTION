@@ -1,0 +1,33 @@
+Package: cartOLD
+Title: Cartographie interactive
+Version: 0.0.1
+Authors@R: 
+    person("Marie-Jeanne", "MARTINAT", , "marie-jeanne.martinat@i-carre.net", role = c("aut", "cre"))
+Description: Application Shiny modulaire pour la visualisation
+    cartographique interactive.
+License: GPL (>= 3)
+Imports: 
+    base64enc,
+    config,
+    dplyr,
+    golem,
+    grDevices,
+    htmlwidgets,
+    leaflet,
+    magrittr,
+    r2d3,
+    RColorBrewer,
+    rmarkdown,
+    markdown,
+    sf,
+    sfarrow,
+    shiny,
+    shinyjs,
+    stats,
+    utils
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

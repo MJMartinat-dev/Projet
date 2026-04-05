@@ -1,0 +1,50 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# FICHIER       : .Rbuildignore
+# AUTEUR        : MJ Martinat
+# DATE          : 2025
+# ORGANISATION  : DDT de la Drôme
+# OBJET         : Exclusion des fichiers/dossiers lors de la construction
+#                 du package technique CartOLD (R CMD build)
+# ──────────────────────────────────────────────────────────────────────────────
+# ── ENVIRONNEMENTS & SESSIONS R ──────────────────
+^renv$                    # Dossier renv (env. isolé)
+^renv\\.lock$             # Snapshot renv
+^.*\\.Rproj$              # Projets RStudio
+^\\.Rproj\\.user$         # Data utilisateur RStudio
+
+# ── CONTRÔLE DE VERSION ──────────────────────────
+^\\.git$                  # Dépôt Git
+^\\.gitignore$            # Règles Git
+^\\.github$               # CI GitHub
+
+# ── DOCUMENTATION / MÉTA / DÉVELOPPEMENT ─────────
+^LICENSE\\.md$            # Licence
+^README\\.md$             # Documentation principale
+^NEWS\\.md$               # Notes de version
+^cran-comments\\.md$      # Commentaires CRAN
+^dev$                     # Scripts développement
+^data-raw$                # Données brutes
+^doc$                     # Documentation auxiliaire
+^docs$                    # Site pkgdown (généré)
+^pkgdown$                 # Artefacts pkgdown
+^Meta$                    # Métadonnées build
+^vignettes$               # Vignettes de documentation
+
+# ── TESTS / QUALITÉ ─────────────────────────────
+^tests$                   # Tests unitaires
+^\\.lintr$                # Config linting
+
+# ── CONFIGURATION CI / BUILD ────────────────────
+^_pkgdown\\.yml$          # Paramétrage pkgdown
+^\\.travis\\.yml$         # CI Travis
+^appveyor\\.yml$          # CI AppVeyor
+^codecov\\.yml$           # Paramétrage couverture
+
+# ── DÉPLOIEMENT ─────────────────────────────────
+^rsconnect$               # Artefacts ShinyApps.io
+^\\.rscignore$            # RStudio Connect ignore
+
+# ──────────────────────────────────────────────────────────────────────────────
+# FIN DU FICHIER
+# ──────────────────────────────────────────────────────────────────────────────
+^\.Rproj\.user$

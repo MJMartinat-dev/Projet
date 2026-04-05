@@ -1,0 +1,169 @@
+---
+output:
+  html_document:
+    self_contained: true
+    theme: null 
+    mathjax: null
+    toc: false
+    css: rmd.css
+---
+
+<div class="main-wrapper">
+<div class="bloc-aide-cadre">
+
+
+<div class="image_aide_bg">
+
+## GUIDE D'UTILISATION
+
+</div>
+
+<div class="bloc-texte-aide-cadre">
+
+<p class="chapeau">
+Application d'information sur les <strong>Obligations Légales de Débroussaillement</strong> dans le département de la Drôme.
+</p>
+
+<div class="encadre-info">
+<div class="titre-encadre">
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+À propos de cette application
+</div>
+<p><strong>cartOLD</strong> vous permet de visualiser si votre terrain est concerné par l'obligation de débroussaillement. En quelques clics, explorez les zones à risque et téléchargez une carte personnalisée.</p>
+</div>
+
+<div class="encadre-warning">
+<div class="titre-encadre">
+<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+Avertissement
+</div>
+<p>Cette application est <strong>informative</strong>. Pour les démarches officielles, contactez votre mairie ou la DDT de la Drôme.</p>
+</div>
+
+---
+
+## Démarrage rapide
+
+<ol class="etapes">
+<li>Cliquez sur <strong>Localisation</strong> dans le menu latéral</li>
+<li>Sélectionnez votre commune ou saisissez votre adresse</li>
+<li>Consultez les zones OLD sur la carte interactive</li>
+<li>Exportez votre carte au format souhaité</li>
+</ol>
+
+---
+
+## Localiser votre terrain
+
+Deux méthodes sont disponibles pour vous localiser sur la carte.
+
+### Recherche par commune
+
+Sélectionnez votre commune dans la liste déroulante, puis cliquez sur **Valider**. La carte effectue automatiquement un zoom sur le territoire communal.
+
+### Recherche par adresse
+
+Saisissez votre adresse (3 caractères minimum). Choisissez parmi les suggestions proposées. Un marqueur s'affiche à l'emplacement correspondant.
+
+---
+
+## Comprendre les couches cartographiques
+
+Activez les couches pertinentes via le panneau **Couches** :
+
+| Couche | Description |
+|:-------|:------------|
+| **Zone OLD 200 m** | Périmètre de vigilance autour des zones forestières sensibles |
+| **Zone OLD 50 m** | Périmètre où le débroussaillement est **obligatoire** |
+| **Parcelles cadastrales** | Limites des propriétés foncières |
+| **Bâtiments** | Emprise des constructions existantes |
+
+<div class="conseil">
+<p><strong>Conseil</strong> — Affichez uniquement la couche OLD 50 m pour identifier rapidement si votre terrain est concerné par l'obligation.</p>
+</div>
+
+---
+
+## Mesurer une distance
+
+Pour vérifier le périmètre de 50 mètres autour de votre habitation :
+
+<ol class="etapes">
+<li>Ouvrez le panneau <strong>Outils</strong></li>
+<li>Sélectionnez l'outil de mesure (icône règle)</li>
+<li>Cliquez sur la carte pour définir les points de mesure</li>
+<li>Double-cliquez pour valider la mesure</li>
+</ol>
+
+La distance s'affiche en temps réel. Utilisez l'icône corbeille pour effacer les mesures.
+
+---
+
+## Exporter votre carte
+
+### Format image (PNG)
+
+Export adapté pour insertion dans un document ou envoi par messagerie électronique.
+
+### Format document (PDF)
+
+Document officiel comportant l'en-tête DDT, la légende cartographique et les mentions légales. Format recommandé pour vos archives.
+
+**Procédure d'export :**
+
+<ol class="etapes">
+<li>Accédez au panneau <strong>Export</strong></li>
+<li>Cliquez sur <strong>Générer l'aperçu</strong></li>
+<li>Vérifiez le rendu proposé</li>
+<li>Cliquez sur <strong>Télécharger</strong></li>
+</ol>
+
+---
+
+## Navigation cartographique
+
+| Action | Méthode |
+|:-------|:--------|
+| **Zoomer** | Molette de souris, boutons +/−, ou double-clic |
+| **Se déplacer** | Cliquer-glisser sur la carte |
+| **Changer le fond de plan** | Sélecteur en bas à gauche (orthophoto, plan IGN) |
+| **Afficher la légende** | Bouton en haut à droite de la carte |
+
+---
+
+## Questions fréquentes
+
+### Ma parcelle est située en zone OLD 50 m. Quelles sont mes obligations ?
+
+Vous devez procéder au débroussaillement dans un rayon de 50 mètres autour de vos constructions. Rapprochez-vous de votre mairie pour connaître les modalités d'application.
+
+### Les données cartographiques sont-elles actualisées ?
+
+Les données proviennent de l'IGN et du cadastre. Elles font l'objet de mises à jour régulières. Des écarts ponctuels peuvent toutefois exister avec la situation réelle du terrain.
+
+### Cette carte peut-elle servir de justificatif officiel ?
+
+Non. Cette carte a une valeur **indicative**. Seuls les documents délivrés par la DDT constituent des pièces officielles.
+
+---
+
+## Contact
+
+<div class="bloc-contact">
+<strong>Direction Départementale des Territoires de la Drôme</strong>
+<p>
+Service Environnement — Unité Forêt<br>
+4 place Laënnec - BP 1013<br>
+26015 Valence Cedex
+</p>
+<p style="margin-top: 0.75rem;">Pour toute question relative à vos obligations de débroussaillement.</p>
+</div>
+
+<p class="pied-page">
+Application développée par la DDT 26<br>
+Version 0.0.1 — Mise à jour : `r format(Sys.Date(), "%d/%m/%Y")`
+</p>
+
+</div>
+</div>
+</div>
