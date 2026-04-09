@@ -1,0 +1,84 @@
+code_region;libelle_region;bassins_versants;code_departement;libelle_departement;code_commune;libelle_commune;code_cours_eau;libelle_cours_eau;code_masse_eau_edl;libelle_masse_eau_edl;type_mesures;type_d_eau;code_site;libelle_site;code_station;libelle_station;station_bulletin;ajout
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26023;BARBIERES;V4010500;La Barberolle;;;Débits;superficiel;V4015030;La Barberolle à Barbières [Pont des Ducs];V401503001;La Barberolle à Barbières [Pont des Ducs];OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26023;BARBIERES;;La Barberolle;;;Ondes;superficiel;V4015010 ;La Barberolle à Barbières ;V4015010 ;La Barberolle à Barbières ;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26035;BEAUFORT-SUR-GERVANNE;V4270500;La Gervanne;;;Débits;superficiel;V4275010;La Gervanne à Beaufort-sur-Gervanne;V427501001;La Gervanne à Beaufort-sur-Gervanne [Résurgence des Fontaigneux];OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26035;BEAUFORT-SUR-GERVANNE;V4270500;La Gervanne;;;Débits;superficiel;V4275910;La Gervanne à Beaufort-sur-Gervanne [Résurgence des Fontaigneux];V427591001;La Gervanne à Beaufort-sur-Gervanne [Résurgence des Fontaigneux];OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26035;BEAUFORT-SUR-GERVANNE;V4270500;La Gervanne;;;Ondes;superficiel;V4275911 ;La Gervanne à Beaufort ;V4275911 ;La Gervanne à Beaufort ;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26040;BEAURIERES ;V4200400;La Drôme;;;Ondes;superficiel;V4200001;La Drôme à Beaurières;V4200001;La Drôme à Charens ;OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;Lez provençal – Lauzon;84;VAUCLUSE;84500;BOLLENE;V5230400;Le Lez;;;Débits;superficiel;V5234010;Le Lez à Bollène;V523401001;Le Lez à Bollène;OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26054;BOUCHET;V5220540;Herin;;;Débits;superficiel;V5220002;L'Herin à Bouchet;V522000201;L'Herin à Bouchet;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26060;BOUVIERES;V4400500;La Gumiane;;;Ondes;superficiel;V4400001;La Gumiane à Bouvières;V4400001;La Gumiane à Bouvières;OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26064;CHABEUIL;V40-0400;La Véore;;;Débits;superficiel;V4034010;La Véore à Chabeuil [Pont des Faucons];V403401001;La Véore à Chabeuil [Pont des Faucons];OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26064;CHABEUIL;V4030400 ;La Véore;;;Ondes;superficiel;V4015010 ;La Véore à Chabeuil ;V4034022 ;La Véore à Chabeuil;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26079;CHARPEY;;;DG146;Alluvions anciennes de la Plaine de Valence;Nappes;souterrain;;Charpey (Alluvions anciennes de la Plaine de Valence);08191X0022/P;Forage - l Hotel (Charpey - BRGM 26);OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;La Méouge;5;HAUTES-ALPES;5034;CHATEAUNEUF-DE-CHABRE;X1051880;Le Rif;;;Ondes;superficiel;X1050001;Le Rif à Châteauneuf-de-Chabre;X1050001;Le Rif à Pomet (05);OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26086;CHATILLON-EN-DIOIS;V4220500;Le Bès;;;Débits;superficiel;V4225010;Le Bès à Châtillon-en-Diois;V422501001;Le Bès à Châtillon-en-Diois;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26094;CLAVEYSON;;;DG251;Molasses miocènes du Bas Dauphiné plaine de Valence et Drôme des collines;Nappes;souterrain;;Claveyson (Molasse Miocène);07707X0144/F;PIEZOMETRE - CHEVAUX (CLAVEYSON - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26096;CLERIEUX;W35-0400;L'Herbasse;;;Débits;superficiel;W3534020;L'Herbasse à Clérieux [Pont de l'Herbasse];W353402001;L'Herbasse à Clérieux [Pont de l'Herbasse];OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26101;COMPS;V4450500;Le Jabron;;;Ondes;superficiel;V4455031;le Jabron à Comps;V4455031;le Jabron à Comps;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26113;DIE;V4230660;Ru. de Marignac;;;Ondes;superficiel;V4230001;Le ruisseau de Marignac à Die;V4230001;Le ru. de Marignac à Die;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26125;EURRE;;;DG337;Alluvions de la Drôme;Nappes;souterrain;;Eurre (alluvions de la Dôme);08424X0006/F2;PIEZOMETRE - CHAMP CAPTANT (EURRE - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26144;GRANE;;;DG337;Alluvions de la Drôme;Nappes;souterrain;;Grâne (alluvins de la Drôme);08423X0067/PZ;PUITS - AEP (GRANE - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26144;GRANE;V4280700 ;Ru. de Grenette;;;Ondes;superficiel;V4287011 ;La Grenette à Grâne ;V4287011 ;La Grenette à Grâne ;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26146;GRIGNAN;V52-0400;Le Lez;;;Ondes;superficiel;V5214026;Le Lez à Grignan;V5214026;Le Lez à Grignan;OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26146;GRIGNAN;V52-0400;Le Lez;;;Débits;superficiel;V5214026;Le Lez à Grignan [Pont D 541];V521402601;Le Lez à Grignan [Pont D 541];OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;Lez provençal – Lauzon;84;VAUCLUSE;84053;GRILLON;V5211380;La Courbellière;;;Ondes;superficiel;V5214022;La Courbellière à Grillon;V5214022;L'Aulière à l'amont de Grillon (84);OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26148;HAUTERIVES;V36-0400;La Galaure;;;Ondes;superficiel;V3600001;La Galaure à Hauterives;V3600001;La Galaure à Hauterives;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26165;LIVRON-SUR-DRÔME;;;DG337;Alluvions de la Drôme;Nappes;souterrain;;Livron (alluvions de la Drôme / Confluence Rhône);08422X0191/F2;PIEZOMETRE - SILO (LIVRON SUR DROME - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26166;LORIOL-SUR-DROME;V4280400;La Drôme;;;Ondes;superficiel;V4284021;La Drôme à Loriol-sur-Drôme [Loriol]; V4284021;La Drôme à Loriol-sur-Drôme;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26166;LORIOL-SUR-DRÔME;;;DG337;Alluvions de la Drôme;Nappes;souterrain;;Loriol (alluvions de la Drôme / Confluence Rhône);08422X0190/F1;PIEZOMETRE - AUTOROUTE (LORIOL SUR DROME - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26167;LUC-EN-DIOIS;V42-0400;La Drôme;;;Débits;superficiel;V4214010;La Drôme à Luc-en-Diois;V421401001;La Drôme à Luc-en-Diois;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26174;MARGES;;;DG251;Molasses miocènes du Bas Dauphiné plaine de Valence et Drôme des collines;Nappes;souterrain;;Margès (Molasse Miocène);07944X0409/F;PIEZOMETRE - SALLE COMMUNALE (MARGES - BRGM 26) - BSH;NON;
+84;AUVERGNE-RHONE-ALPES;Royan – Vercors;38;ISERE;38225;MEAUDRE;W331 0500;Le Méaudret;;;Débits;superficiel;W331 5010;Le Méaudret à Méaudre;W331501001;Le Meaudret à Méaudre (38);OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26185;MIRMANDE;V4320520;La Tessonne;;;Ondes;superficiel;V4320001;La Tessonne à Mirmande;V4320001;La Tessonne à Mirmande;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;38;ISERE;38255;MONTFALCON;V3600580;Le Galaveyson;;;Ondes;superficiel;V3600002;Le Galaveyson à Montfalcon;V3600002;Le Galaveyson à Montfalcon (38);OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26196;MONTLEGER;V4040500;Le Pétochin;;;Ondes;superficiel;V4040001;Le Pétochin à Montéléger;V4040001;Le ru. de Loye à Montéléger;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26205;MONTMAUR-EN-DIOIS;V4230500;Ru. De l'Esconavette;;;Ondes;superficiel;V4230002;L'Esconavette à Montmaur-en-Diois;V4230002;L'Esconavette à Montmaur-en-Diois;OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26206;MONTMEYRAND;;;DG251;Molasses miocènes du Bas Dauphiné plaine de Valence et Drôme des collines;Nappes;souterrain;;Montmeyran (Molasse Miocène);08188X0045/BERN;PUITS - BERNOIR (MONTMEYRAND - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26207;MONTMIRAL;W3410520;La Joyeuse;;;Ondes;superficiel;W3410001;La Joyeuse à Momtmiral;W3410001;La Joyeuse à Momtmiral;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26207;MONTMIRAL;W3420520;Le Bagnol;;;Ondes;superficiel;W3420001;Le ruisseau de Bagnol à Montmiral;W3420001;Le Bagnol à Montmiral;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26210;MONTRIGAUD;W3510520;La Limone;;;Ondes;superficiel;W3510001;La Limone à Montrigaud;W3510001;La Limone à Montrigaud;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26249;PONT-DE-BARRET;V44-0400;Le Roubion;;;Ondes;superficiel;V441 5811;Le Roubion à Pont-de-Barret;V4415811;le Roubion à Pont-de-Barret;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26020;REPARA-AURIPLES;V4280700;Ru. de Grenette;;;Débits;superficiel;V4287010;Le ruisseau de Grenette à la Répara-Auriples;V428701001;Le ruisseau de Grenette à la Répara-Auriples;OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;Lez provençal – Lauzon;84;VAUCLUSE;84097;RICHERENCHES;V5210560;La Coronne;;;Ondes;superficiel;V521 4023;La Coronne à Richerenches;V5214023;La Coronne à Richerenches (84);OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;Lez provençal – Lauzon;84;VAUCLUSE;84097;RICHERENCHES;;La Talobre;;;Ondes;superficiel;V5220001;[La Talobre] à Richerenches;V5220001;La Talobre à Richerenches (84);OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26273;ROCHEFORT-SANSOM;W3410500;Le ru; de Béaure;;Ondes;superficiel;W3410002;Le ruisseau de Béaure à Rochefort-Samson;W3410002;La Béaure à Rochefort;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26281;ROMANS-SUR-ISERE;;;DG147;Alluvions anciennes terrasses de Romans et de l'Isère;Nappes;souterrain;;Romans-sur-Isère (alluvions de l’Isère);07948X0038/S;PIEZOMETRE - LES BALMES (ROMANS SUR ISERE - BRGM 26) - BSH;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26281;ROMANS-SUR-ISERE;;;DG248 ;Molasses miocènes du Bas Dauphiné entre les vallées de l'Ozon et de la Drôme ;Nappes;souterrain;V4034022 ;;07948X0047/F1;FORAGE - MAUPAS (ROMANS SUR ISERE - 26);OUI;OUI
+93;PROVENCE-ALPES-CÔTE-D-AZUR;AEygues;5;HAUTES-ALPES;5126;ROSANS;V5300680 ;Rivière Lidane ;;;Ondes;Superficiel;V5304011;La Lidane à Rosans ;V5304011;La Lidane à Rosans ;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26284;ROUSSAS;V4550500;La Vence;;;Ondes;superficiel;V4550001;La Vence à Roussas;V4550001;La Vence à Roussas;OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26289;SAILLANS;V42-0400;La Drôme;;;Débits;superficiel;V4264010;La Drôme à Saillans;V426401001;La Drôme à Saillans;OUI;
+84;AUVERGNE-RHONE-ALPES;AEygues;26;DROME;26290;SAINT-AGNAN-EN-VERCORS;W3330500;La Vernaison;;;Débits;superficiel;;;;L’Aygues à Camaret;JAUGEAGES;
+84;AUVERGNE-RHONE-ALPES;Royan – Vercors;26;DROME;26290;SAINT-AGNAN-EN-VERCORS;W3330500;La Vernaisson;;;Ondes;superficiel;W3335211;La Vernaisson à Saint-Agnan-en-Vercors;W3335211;La Vernaison à Saint Agnan;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;38;ISERE;38370;SAINT-BONNET-DE-CHAVAGNE;;;DG251;Molasses miocènes du Bas Dauphiné plaine de Valence et Drôme des collines;Nappes;souterrain;;;07953X0104/P;PUITS - FONTCHAUDE (SAINT-BONNET-DE-CHAVAGNE - BRGM 38) - BSH;OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;AEygues;84;VAUCLUSE;84290;SAINTE CECILE LES VIGNES;;;;;Nappes;souterrain;;"Nappe alluviale de L'AYGUES (SAINTE CECILE LES VIGNES) 
+EARL DELHOME JM et B";OUGC84-1754;"Nappe alluviale de L'AYGUES (SAINTE CECILE LES VIGNES) 
+EARL DELHOME JM et B";OUI;
+84;AUVERGNE-RHONE-ALPES;Bassin de la Drôme;26;DROME;26299;SAINTE_CROIX;V4240500;La Sure;;;Ondes;superficiel;V4240001;La Sure à Sainte-Croix;V4240001;La Sure à Vachères;OUI;
+84;AUVERGNE-RHONE-ALPES;AEygues;26;DROME;26306;SAINTE-JALLE;V5320600 ;L'Ennuye ;;;Ondes;superficiel;V5326011 ;L'ennuyé à Sainte Jalle ;V5326011 ;L'ennuyé à Sainte Jalle ;OUI;OUI
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26310;SAINT-LAURENT-D'ONAY;W3420540;Le Chalon;;;Ondes;superficiel;W3420002;Le Chalon à Momtmiral;W3420002;Le Chalon à Momtmiral ;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26312;SAINT-MARCEL-LES-SAUZET;;;DG327;Alluvions du Roubion et Jabron - plaine de la Valdaine;Nappes;souterrain;;Saint-Marcel-les-Sauzet (Alluvions Roubion-Jabron);08662X0408/F;PIEZOMETRE - FIN DE ROUTE(SAINT-MARCEL-LES-SAUZET - BRGM 26);OUI;
+84;AUVERGNE-RHONE-ALPES;Royan – Vercors;26;DROME;26315;SAINT-MARTIN-EN-VERCORS;W3330540;L'Adouin;;;Débits;superficiel;W3335210;L'Adouin à Saint-Martin-en-Vercors [Tourtre];W333521001;L'Adouin à Saint-Martin-en-Vercors [Tourtre];oui;
+84;AUVERGNE-RHONE-ALPES;AEygues;26;DROME;26318;SAINT-MAY;V53-0400;L'Aigue;;;Débits;superficiel;V5324010;L'Aigue à Saint-May;V532401002;L'Aigue à Saint-May - RD 562;OUI;
+84;AUVERGNE-RHONE-ALPES;Galaure – Drôme des Collines;26;DROME;26332;SAINT-UZE;V36-0400;La Galaure;;;Débits;superficiel;V3614010;La Galaure à Saint-Uze;V361401001;La Galaure à Saint-Uze;OUI;
+84;AUVERGNE-RHONE-ALPES;Berre;26;DROME;26335;SALLES-SOUS-BOIS;V4540430;La Berre;;;Ondes;superficiel;V4540001;La Berre à Salles-sous-Bois;V4540001;La Berre à Salles-sous-Bois;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26336;SAOU;;;DG127;Molasses miocènes du Bas Dauphiné plaine de Valence et Drôme des collines;Nappes;souterrain;;Saoû (système mixte karst – alluvions);08435X0010/NO8;PIEZOMETRE - LE PERTHUIS (SAOU - BRGM 26) - BSH;NON;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26342;SOLERIEUX;V5100520;Le Lauzon;;;Ondes;superficiel;V5100001;Le Lauzon à Solérieux;V5100001;Le Lauzon à Solérieux;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26343;SOUSPIERRE;V4450500;Le Jabron;;;Débits;superficiel;V4455010;Le Jabron à Souspierre;V445501001;Le Jabron à Souspierre;OUI;
+84;AUVERGNE-RHONE-ALPES;Roubion – Jabron;26;DROME;26344;SOYANS;V44-0400;Le Roubion;;;Débits;superficiel;V4414010;Le Roubion à Soyans;V441401001;Le Roubion à Soyans;OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26345;SUZE-LA-ROUSSE;V52-0400;Le Lez;;;Débits;superficiel;V5220003;Le Lez à Suze-la-Rousse;V522000301;Le Lez à Suze-la-Rousse;OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;26350;TEYSSIERES;V52-0400;Le Lez;;;Ondes;superficiel;V5200002;Le Lez à Teyssières [Vieux Village];V520000201;Le Lez à Teyssières [Vieux Village];OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;AEygues;84;VAUCLUSE;84135;UCHAUX;V5350700;Ru. Le Rieu;;;Ondes;superficiel;V5354011;Le Rieu à Uchaux;V5354011;Le Rieu Foyro à Uchaux (84);OUI;
+84;AUVERGNE-RHONE-ALPES;Plaine de Valence;26;DROME;26362;VALENCE;;;DG146;Alluvions anciennes de la Plaine de Valence;Nappes;souterrain;;Valence (Alluvions anciennes  de la Plaine de Valence);08184X0084/PZ1;PIEZOMETRE - FERME AGIRON (VALENCE - BRGM 26) - BSH;OUI;
+93;PROVENCE-ALPES-CÔTE-D-AZUR;Lez provençal – Lauzon;84;VAUCLUSE;84138;VALREAS;V5210600;Ruisseau du Pègue;;;Ondes;superficiel;V5214024;Le ruisseau du Pègue à Valréas;V5214024;Le Pègue à l'amont de Valréas (84);OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;84138;VALREAS;;;;;Nappes;souterrain;;"Nappe alluviale de la CORONNE (VALREAS)
+EARL PEPINIERE LAFOND";OUGC84-0660;"Nappe alluviale de la CORONNE (VALREAS)
+EARL PEPINIERE LAFOND";OUI;
+84;AUVERGNE-RHONE-ALPES;AEygues;26;DROME;26367;VENTEROL;V5330660 ;La Sauve ;;;Ondes;superficiel;V5334011;La Sauve à Venterol ;V5334011;La Sauve à Venterol ;OUI;OUI
+93;PROVENCE-ALPES-CÔTE-D-AZUR;AEygues;84;VAUCLUSE;84146;VILLEDIEU;;;;;Nappes;souterrain;;"Nappe d'accompagnement de l'AYGUES (VILLEDIEU)
+EARL SERRE DES MOINES";OUGC84-1688;"Nappe d'accompagnement de l'AYGUES (VILLEDIEU)
+EARL SERRE DES MOINES";OUI;
+84;AUVERGNE-RHONE-ALPES;Lez provençal – Lauzon;26;DROME;84150;VISAN;;;;;Nappes;souterrain;;"Nappe d'accompagnement de l'HERIN (VISAN)
+EARL DOMAINE P, PLANTEVIN";OUGC84-1387;"Nappe d'accompagnement de l'HERIN (VISAN)
+EARL DOMAINE P, PLANTEVIN";OUI;
+84;AUVERGNE-RHONE-ALPES;La Méouge;26;DROME;;;;;;;Débits;superficiel;X1050003;Station EDF de Pomet (05);X105000301;Station EDF de Pomet (05);OUI;

@@ -1,34 +1,14 @@
-% ============================================================================
-% FICHIER      : main.tex
-% AUTEUR       : MJMartinat
-% DATE         : 2025
-% DESCRIPTION  : Fragment LaTeX à inclure via before_body dans le YAML d’un
-%                document R Markdown PDF.
-%                Sert à insérer des définitions de couleurs et tout préambule
-%                additionnel AVANT le corps du document.
-%                NE PAS LANCER NI COMPILER CE FICHIER SEUL !
-% ============================================================================
-
-% --- Chargement du package xcolor pour les couleurs dans les tableaux
-\usepackage[table]{xcolor}
-
-% --- Définitions des couleurs institutionnelles pour les restrictions
-\definecolor{vigilance}{HTML}{F7EFA5}
-\definecolor{alerte}{HTML}{FFB542}
-\definecolor{alerterenforcee}{HTML}{FF4A29}
-\definecolor{crise}{HTML}{AD0021}
-\definecolor{pasdere}{HTML}{E6EFFF}
-
-% ============================================================================
-% Ce fichier est inséré AVANT le corps du document, via :
-% output:
-%   pdf_document:
-%     latex_engine: xelatex
-%     includes:
-%       before_body: chemin/vers/main.tex
-%
-% Il ne doit PAS contenir \documentclass, \begin{document} ni \end{document}.
-% ============================================================================
-
-% (Laisse ce fichier vide en dehors des définitions à inclure)
-
+Package: Secheresse
+Title: BSecheresse
+Version: 0.0.1
+Authors@R: 
+    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+Author: MJ MARTINAT
+Maintainer: Aurélie WILD <aurelie.wild@drome.gouv.fr>
+Description: Outil de génération de bulletins sécheresse au format pdf et
+    html.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
