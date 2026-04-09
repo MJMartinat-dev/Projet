@@ -1,0 +1,87 @@
+% ============================================================================
+% FICHIER      : header.tex
+% AUTEUR       : MJ Martinat
+% DATE         : 2024-07-21 (corrigé 2026-01-02)
+% DESCRIPTION  : En-tête LaTeX pour bulletins PDF XeLaTeX (mise en page DDT 26)
+%                À inclure via l'option "in_header" du YAML d'un document Rmd.
+%                NE PAS COMPILER CE FICHIER SEUL !
+% CORRECTION   : Chemin du logo simplifié (copié dans le répertoire de sortie)
+% ============================================================================
+
+% --- Encodage UTF8 et polices Unicode (XeLaTeX obligatoire) -----------------
+\usepackage{fontspec}
+\usepackage{xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Marianne}
+
+% --- Packages pour mise en page, tableaux et couleurs -----------------------
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{float}
+\usepackage{makecell}
+\usepackage{multirow}
+
+% --- Packages requis pour RMarkdown/Pandoc ----------------------------------
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{bookmark}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% --- Définitions des couleurs institutionnelles -----------------------------
+\definecolor{vigilance}{HTML}{F7EFA5}
+\definecolor{alerte}{HTML}{FFB542}
+\definecolor{alerterenforcee}{HTML}{FF4A29}
+\definecolor{crise}{HTML}{AD0021}
+\definecolor{pasdere}{HTML}{E6EFFF}
+\definecolor{grisclair}{HTML}{F0F0F0}
+
+% --- Style d'en-tête de tableau ---------------------------------------------
+\renewcommand\theadfont{\normalsize\bfseries}
+
+% --- Mise en forme de l'en-tête et du pied de page --------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\addtolength{\headheight}{1.5cm}
+
+% ============================================================================
+% CORRECTION : Le logo est maintenant dans le répertoire de sortie
+% Le script R copie marianne.png dans sorties/bulletins/pdf/ avant compilation
+% ============================================================================
+
+% --- Insertion du logo Marianne à gauche de l'en-tête -----------------------
+\fancyhead[L]{%
+  \IfFileExists{marianne.png}{%
+    \includegraphics[height=1.5cm]{marianne.png}%
+  }{%
+    % Fallback si le logo n'existe pas : afficher un texte
+    \textbf{[Logo]}%
+  }%
+}
+
+% --- Bloc institutionnel à droite de l'en-tête ------------------------------
+\fancyhead[R]{%
+  \begin{minipage}[b]{0.65\textwidth}
+    \raggedleft
+    \footnotesize
+    \textbf{Direction Départementale des Territoires\\
+    Service Eau Forêts Espaces Naturels\\
+    Pôle Qualité Quantité Eau\\}
+    \texttt{ddt-sefen-pe@drome.gouv.fr}
+  \end{minipage}%
+}
+
+% ============================================================================
+% REMARQUES :
+% - À inclure via includes: in_header: fichiers/tex/header.tex dans le YAML
+% - Ne pas compiler ce fichier seul
+% - Le script create_bulletin.R copie le logo avant la compilation
+% - Pour questions : pôle SEFEN, DDT Drôme
+% ============================================================================

@@ -1,0 +1,243 @@
+<!-- ==========================================================================
+     HEADER.HTML – Bulletin sécheresse DDT Drôme
+     Alignement strict – HTML & PDF
+     Auteur : MJ Martinat – 2026
+     ========================================================================== -->
+
+<style>
+:root {
+  --couleur-entete: #001942;
+  --couleur-vigilance: #f7efa5;
+  --couleur-alerte: #ffb542;
+  --couleur-alerte-renforcee: #ff4a29;
+  --couleur-crise: #ad0021;
+  --couleur-pas-restriction: #e6efff;
+  --couleur-gris-clair: #f0f0f0;
+  --couleur-gris-bordure: #cccccc;
+  --largeur-max: 1024px;
+}
+
+/* ==========================================================================
+   PDF
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 1cm 1.5cm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  table {
+    page-break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   CONTENEUR MAÎTRE UNIQUE (CLEF DE L’ALIGNEMENT)
+   ========================================================================== */
+
+.container-fluid.main-container,
+.main-container {
+  max-width: var(--largeur-max) !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* Tous les blocs héritent du même cadre */
+.header-container,
+.titre-bulletin,
+.pluviometrie,
+.situation,
+.cartographie,
+.section,
+.table-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+
+.header-container {
+  max-width: 1024px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background: url("../images/image_secheresse.png") center / cover no-repeat;
+  background-color: var(--couleur-entete);
+  color: white;
+  min-height: 90px;
+}
+
+.header-left img {
+  height: 85px;
+  max-width: 200px;
+  width: auto;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 0.95em;
+  font-family: 'Marianne', 'Arial', sans-serif;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   TITRE DU BULLETIN
+   ========================================================================== */
+
+.titre-bulletin {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.titre-bulletin h1 {
+  font-size: 1.8em;
+  margin-bottom: 5px;
+}
+
+.titre-bulletin h2 {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.titre-bulletin p {
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+.pluviometrie,
+.situation,
+.cartographie {
+  margin: 20px 0;
+}
+
+.pluviometrie h2,
+.situation h2,
+.cartographie h2,
+h2.titre-section {
+  font-variant: small-caps;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* ==========================================================================
+   TABLEAUX – ALIGNEMENT STRICT
+   ========================================================================== */
+
+.table,
+.table-responsive table {
+  width: 100% !important;
+  margin: 10px 0 !important;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: 'Marianne', 'Arial', sans-serif;
+  font-size: 9.5pt;
+}
+
+.table th {
+  background-color: var(--couleur-pas-restriction);
+  border: 1px solid var(--couleur-gris-bordure);
+  text-align: center;
+  font-weight: bold;
+  padding: 6px;
+}
+
+.table td {
+  border: 1px solid var(--couleur-gris-bordure);
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: var(--couleur-gris-clair);
+}
+
+/* ==========================================================================
+   COULEURS DE RESTRICTION
+   ========================================================================== */
+
+.bg-vigilance { background-color: var(--couleur-vigilance) !important; }
+.bg-alerte { background-color: var(--couleur-alerte) !important; }
+.bg-alerte-renforcee { background-color: var(--couleur-alerte-renforcee) !important; }
+.bg-crise {
+  background-color: var(--couleur-crise) !important;
+  color: white !important;
+}
+.bg-pas-restriction { background-color: var(--couleur-pas-restriction) !important; }
+
+/* ==========================================================================
+   CARTOGRAPHIE
+   ========================================================================== */
+
+.cartographie {
+  page-break-before: always;
+  text-align: center;
+}
+
+.carte-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   GLOBAL
+   ========================================================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3 {
+  font-family: 'Marianne', 'Arial', sans-serif;
+  color: var(--couleur-entete);
+}
+</style>
+
+<!-- ==========================================================================
+     HEADER VISUEL
+     ========================================================================== -->
+
+<div class="header-container">
+  <div class="header-left">
+    <img src="../images/logo_prefete.png" alt="Logo Marianne">
+  </div>
+  <div class="header-right">
+    <strong>Direction Départementale des Territoires</strong><br>
+    Service Eau Forêts Espaces Naturels<br>
+    Pôle Qualité Quantité Eau
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var dateEl = document.getElementById("date");
+  if (dateEl) {
+    dateEl.textContent = new Date().toLocaleDateString("fr-FR", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    });
+  }
+});
+</script>
