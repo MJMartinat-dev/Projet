@@ -117,8 +117,8 @@ bsecheresse/
 │   ├── generate_restriction_map.R  ← génération des cartes de restriction
 │   └── ...                         ← scripts d'aide (téléchargement, traitement)
 ├── data/
-│   ├── seuils_hydro.csv            ← ⚠️ à préparer manuellement (non distribué)
-│   ├── seuils_piezo.csv            ← ⚠️ à préparer manuellement (non distribué)
+│   ├── seuils_hydro.csv            ← ⚠️ à préparer préalablement (non distribué)
+│   ├── seuils_piezo.csv            ← ⚠️ à préparer préalablement (non distribué)
 │   └── [shapefile secteurs]        ← secteurs de gestion (fourni)
 └── sorties/                        ← livrables générés
     ├── Bulletin_Secheresse.pdf
@@ -135,6 +135,7 @@ bsecheresse/
 | **PDF** | Bulletin mis en page, imprimable | Diffusion officielle, archives |
 | **HTML** | Bulletin interactif navigable | Partage web, consultation en ligne |
 | **PNG** | Cartes de restriction par type d'eau | Intégration dans le bulletin ou diffusion séparée |
+| **XLSX** | Graphiques par stations avec tableaux|
 
 ---
 
