@@ -106,10 +106,10 @@ Application Shiny de visualisation et d'analyse des données territoriales drôm
 | | |
 |---|---|
 | Contexte | DREAL Bourgogne-Franche-Comté — Stage 2021/2022 |
-| Stack | QGIS · ArcGIS · Model Builder · ASTER'X |
+| Stack | QGIS · Modele CCR · Model Builder · ASTER'X |
 
 **Description**  
-Méthodologie de priorisation pour l'élaboration et la révision des Plans de Prévention des Risques Naturels (PPRN). Automatisation par Model Builder — coordination COPIL avec les DDTs de la région.
+Méthodologie de priorisation pour l'élaboration et la révision des Plans de Prévention des Risques Naturels (PPRN). Automatisation par Model Builder — coordination COPIL avec les DDTs de la région. Projet confidentiel.
 
 ---
 
